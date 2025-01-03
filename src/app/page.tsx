@@ -42,15 +42,38 @@ export default function Home() {
     recipientCity: searchParams.get("recipientCity") || "",
     recipientCountry: searchParams.get("recipientCountry") || "",
     recipientEmail: searchParams.get("recipientEmail") || "",
-    contentDescription: searchParams.get("contentDescription") || "",
-    quantity: searchParams.get("quantity") || 1,
-    netWeight: searchParams.get("netWeight") || "",
-    value: searchParams.get("value") || "",
-    HSTariffNumber: searchParams.get("HSTariffNumber") || "",
-    CountryOfOriginOfGoods: searchParams.get("CountryOfOriginOfGoods") || "",
+    contentDescription1: searchParams.get("contentDescription1") || "",
+    quantity1: searchParams.get("quantity1") || 1,
+    netWeight1: searchParams.get("netWeight1") || "",
+    value1: searchParams.get("value1") || "",
+    HSTariffNumber1: searchParams.get("HSTariffNumber1") || "",
+    CountryOfOriginOfGoods1: searchParams.get("CountryOfOriginOfGoods1") || "",
+    contentDescription2: searchParams.get("contentDescription2") || "",
+    quantity2: searchParams.get("quantity2") || 1,
+    netWeight2: searchParams.get("netWeight2") || "",
+    value2: searchParams.get("value2") || "",
+    HSTariffNumber2: searchParams.get("HSTariffNumber2") || "",
+    CountryOfOriginOfGoods2: searchParams.get("CountryOfOriginOfGoods2") || "",
+    contentDescription3: searchParams.get("contentDescription3") || "",
+    quantity3: searchParams.get("quantity3") || 1,
+    netWeight3: searchParams.get("netWeight3") || "",
+    value3: searchParams.get("value3") || "",
+    HSTariffNumber3: searchParams.get("HSTariffNumber3") || "",
+    CountryOfOriginOfGoods3: searchParams.get("CountryOfOriginOfGoods3") || "",
+    contentDescription4: searchParams.get("contentDescription4") || "",
+    quantity4: searchParams.get("quantity4") || 1,
+    netWeight4: searchParams.get("netWeight4") || "",
+    value4: searchParams.get("value4") || "",
+    HSTariffNumber4: searchParams.get("HSTariffNumber4") || "",
+    CountryOfOriginOfGoods4: searchParams.get("CountryOfOriginOfGoods4") || "",
     totalWeight: searchParams.get("totalWeight") || "",
     categoryOfItem: searchParams.get("categoryOfItem") || "",
     explaination: searchParams.get("explaination") || "",
+    comments: searchParams.get("comments") || "",
+    licence: searchParams.get("licence") === "true" || false,
+    licenceNumber: searchParams.get("licenceNumber") || "",
+    certificate: searchParams.get("certificate") === "true" || false,
+    certificateNumber: searchParams.get("certificateNumber") || "",
     invoice: searchParams.get("invoice") === "true" || false,
     invoiceNumber: searchParams.get("invoiceNumber") || "",
     postalCharges: searchParams.get("postalCharges") || "",
@@ -60,6 +83,14 @@ export default function Home() {
   const [formData, setFormData] = useState(initialFormData);
   const [date, setDate] = React.useState<Date>();
   const [pdfUrl, setPdfUrl] = useState<string | null>("/assets/docs/cn23.pdf");
+
+  const totalValue =
+    (
+      (parseInt(formData.value1) || 0) * (Number(formData.quantity1) || 0) +
+      (parseInt(formData.value2) || 0) * (Number(formData.quantity2) || 0) +
+      (parseInt(formData.value3) || 0) * (Number(formData.quantity3) || 0) +
+      (parseInt(formData.value4) || 0) * (Number(formData.quantity4) || 0)
+    ).toString() + " EUR";
 
   const updatePdf = async () => {
     try {
@@ -93,23 +124,51 @@ export default function Home() {
         recipientCity,
         recipientCountry,
         recipientEmail,
-        contentDescription,
-        quantity,
-        netWeight,
-        value,
-        HSTariffNumber,
-        CountryOfOriginOfGoods,
+        contentDescription1,
+        quantity1,
+        netWeight1,
+        value1,
+        HSTariffNumber1,
+        CountryOfOriginOfGoods1,
+        contentDescription2,
+        quantity2,
+        netWeight2,
+        value2,
+        HSTariffNumber2,
+        CountryOfOriginOfGoods2,
+        contentDescription3,
+        quantity3,
+        netWeight3,
+        value3,
+        HSTariffNumber3,
+        CountryOfOriginOfGoods3,
+        contentDescription4,
+        quantity4,
+        netWeight4,
+        value4,
+        HSTariffNumber4,
+        CountryOfOriginOfGoods4,
         totalWeight,
         categoryOfItem,
         explaination,
+        comments,
+        licence,
+        licenceNumber,
+        certificate,
+        certificateNumber,
         invoice,
         invoiceNumber,
         postalCharges,
         date,
       } = formData;
 
-      const totalValue =
-        (parseInt(value) * Number(quantity)).toString() + " EUR";
+      // const totalValue =
+      //   (
+      //     parseInt(formData.value1) * Number(formData.quantity1) +
+      //     parseInt(formData.value2) * Number(formData.quantity2) +
+      //     parseInt(formData.value3) * Number(formData.quantity3) +
+      //     parseInt(formData.value4) * Number(formData.quantity4)
+      //   ).toString() + " EUR";
       const pageHeight = page.getHeight();
 
       if (senderName) {
@@ -211,7 +270,7 @@ export default function Home() {
       if (recipientCountry) {
         page.drawText(recipientCountry.toUpperCase(), {
           x: 114,
-          y: pageHeight - 206,
+          y: pageHeight - 205,
           size: 10,
         });
       }
@@ -224,50 +283,194 @@ export default function Home() {
         });
       }
 
-      if (contentDescription) {
-        page.drawText(contentDescription, {
+      if (contentDescription1) {
+        page.drawText(contentDescription1, {
           x: 74,
-          y: pageHeight - 242,
+          y: pageHeight - 243,
           size: 9.8,
         });
       }
 
-      if (quantity) {
-        page.drawText(quantity.toString(), {
+      if (quantity1) {
+        page.drawText(quantity1.toString(), {
           x: 246,
           y: pageHeight - 243,
           size: 10,
         });
       }
 
-      if (netWeight) {
-        page.drawText(netWeight, {
+      if (netWeight1) {
+        page.drawText(netWeight1, {
           x: 282,
           y: pageHeight - 243,
           size: 10,
         });
       }
 
-      if (value) {
-        page.drawText(value, {
+      if (value1) {
+        page.drawText(value1, {
           x: 334,
           y: pageHeight - 243,
           size: 10,
         });
       }
 
-      if (HSTariffNumber) {
-        page.drawText(HSTariffNumber, {
+      if (HSTariffNumber1) {
+        page.drawText(HSTariffNumber1, {
           x: 381,
           y: pageHeight - 243,
           size: 10,
         });
       }
 
-      if (CountryOfOriginOfGoods) {
-        page.drawText(CountryOfOriginOfGoods.toUpperCase(), {
+      if (CountryOfOriginOfGoods1) {
+        page.drawText(CountryOfOriginOfGoods1.toUpperCase(), {
           x: 499,
           y: pageHeight - 243,
+          size: 10,
+        });
+      }
+
+      if (contentDescription2) {
+        page.drawText(contentDescription2, {
+          x: 74,
+          y: pageHeight - 258,
+          size: 9.8,
+        });
+      }
+
+      if (quantity2) {
+        page.drawText(quantity2.toString(), {
+          x: 246,
+          y: pageHeight - 258,
+          size: 10,
+        });
+      }
+
+      if (netWeight2) {
+        page.drawText(netWeight2, {
+          x: 282,
+          y: pageHeight - 258,
+          size: 10,
+        });
+      }
+
+      if (value2) {
+        page.drawText(value2, {
+          x: 334,
+          y: pageHeight - 258,
+          size: 10,
+        });
+      }
+
+      if (HSTariffNumber2) {
+        page.drawText(HSTariffNumber2, {
+          x: 381,
+          y: pageHeight - 258,
+          size: 10,
+        });
+      }
+
+      if (CountryOfOriginOfGoods2) {
+        page.drawText(CountryOfOriginOfGoods2.toUpperCase(), {
+          x: 499,
+          y: pageHeight - 258,
+          size: 10,
+        });
+      }
+
+      if (contentDescription3) {
+        page.drawText(contentDescription3, {
+          x: 74,
+          y: pageHeight - 272.5,
+          size: 9.8,
+        });
+      }
+
+      if (quantity3) {
+        page.drawText(quantity3.toString(), {
+          x: 246,
+          y: pageHeight - 272.5,
+          size: 10,
+        });
+      }
+
+      if (netWeight3) {
+        page.drawText(netWeight3, {
+          x: 282,
+          y: pageHeight - 272.5,
+          size: 10,
+        });
+      }
+
+      if (value3) {
+        page.drawText(value3, {
+          x: 334,
+          y: pageHeight - 272.5,
+          size: 10,
+        });
+      }
+
+      if (HSTariffNumber3) {
+        page.drawText(HSTariffNumber3, {
+          x: 381,
+          y: pageHeight - 272.5,
+          size: 10,
+        });
+      }
+
+      if (CountryOfOriginOfGoods3) {
+        page.drawText(CountryOfOriginOfGoods3.toUpperCase(), {
+          x: 499,
+          y: pageHeight - 272.5,
+          size: 10,
+        });
+      }
+
+      if (contentDescription4) {
+        page.drawText(contentDescription4, {
+          x: 74,
+          y: pageHeight - 287,
+          size: 9.8,
+        });
+      }
+
+      if (quantity4) {
+        page.drawText(quantity4.toString(), {
+          x: 246,
+          y: pageHeight - 287,
+          size: 10,
+        });
+      }
+
+      if (netWeight4) {
+        page.drawText(netWeight4, {
+          x: 282,
+          y: pageHeight - 287,
+          size: 10,
+        });
+      }
+
+      if (value4) {
+        page.drawText(value4, {
+          x: 334,
+          y: pageHeight - 287,
+          size: 10,
+        });
+      }
+
+      if (HSTariffNumber4) {
+        page.drawText(HSTariffNumber4, {
+          x: 381,
+          y: pageHeight - 287,
+          size: 10,
+        });
+      }
+
+      if (CountryOfOriginOfGoods4) {
+        page.drawText(CountryOfOriginOfGoods4.toUpperCase(), {
+          x: 499,
+          y: pageHeight - 287,
           size: 10,
         });
       }
@@ -343,15 +546,50 @@ export default function Home() {
         });
       }
 
+      if (comments) {
+        page.drawText(comments, {
+          x: 74,
+          y: pageHeight - 365,
+          size: 8,
+        });
+      }
+
+      if (licence) {
+        page.drawText("x", {
+          x: 74.7,
+          y: pageHeight - 409.5,
+          size: 14.1,
+        });
+        if (licenceNumber) {
+          page.drawText(licenceNumber, {
+            x: 74,
+            y: pageHeight - 429,
+            size: 10,
+          });
+        }
+      }
+
+      if (certificate) {
+        page.drawText("x", {
+          x: 180.4,
+          y: pageHeight - 409.5,
+          size: 14.1,
+        });
+        if (certificateNumber) {
+          page.drawText(certificateNumber, {
+            x: 179.7,
+            y: pageHeight - 429,
+            size: 10,
+          });
+        }
+      }
+
       if (invoice) {
         page.drawText("x", {
           x: 282.7,
           y: pageHeight - 409.5,
           size: 14.1,
         });
-      }
-
-      if (invoiceNumber) {
         page.drawText(invoiceNumber, {
           x: 282,
           y: pageHeight - 429,
@@ -407,98 +645,120 @@ export default function Home() {
   }, [formData, date]);
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-neutral-100 dark:bg-neutral-900 p-6">
-      <h1 className="text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
-        CN23 PDF
-      </h1>
-      <div className="grid grid-cols-5 w-full gap-4">
-        <div className="col-span-3 overflow-y-scroll">
+    <div className="flex flex-col justify-center items-center h-screen bg-neutral-100 dark:bg-neutral-900 p-6">
+      {/* <div className="grid grid-rows w-full gap-4"> */}
+      <div className="flex flex-col md:flex-row items-stretch w-full h-screen gap-4">
+        {/* <div className="order-last md:order-first col-span-3 overflow-y-scroll"> */}
+        <div className="order-last md:order-first basis-3/5 overflow-y-scroll">
           <form className="bg-white dark:bg-neutral-800 rounded-lg p-6">
+            <h1 className="text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
+              CN23 PDF Generator
+            </h1>
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
-                <p className="font-semibold">Sender</p>
-                <div>
-                  <Label htmlFor="senderName">Name</Label>
+                <p className="font-bold">Sender</p>
+                <div className="mb-2">
+                  <Label htmlFor="senderName" className="font-semibold">
+                    Name
+                  </Label>
                   <Input
                     type="text"
                     id="senderName"
                     name="senderName"
                     value={formData.senderName}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
+                    autoComplete="name"
+                    className="border border-gray-300 rounded w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="senderBusiness">Business</Label>
+                <div className="mb-2">
+                  <Label htmlFor="senderBusiness" className="font-semibold">
+                    Business
+                  </Label>
                   <Input
                     type="text"
                     name="senderBusiness"
                     id="senderBusiness"
                     value={formData.senderBusiness}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="senderStreet">Street</Label>
+                <div className="mb-2">
+                  <Label htmlFor="senderStreet" className="font-semibold">
+                    Street
+                  </Label>
                   <Input
                     type="text"
                     name="senderStreet"
                     id="senderStreet"
                     value={formData.senderStreet}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="senderPostcode">Postcode</Label>
+                <div className="mb-2">
+                  <Label htmlFor="senderPostcode" className="font-semibold">
+                    Postcode
+                  </Label>
                   <Input
                     type="text"
                     name="senderPostcode"
                     id="senderPostcode"
                     value={formData.senderPostcode}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="senderCity">City</Label>
+                <div className="mb-2">
+                  <Label htmlFor="senderCity" className="font-semibold">
+                    City
+                  </Label>
                   <Input
                     type="text"
                     name="senderCity"
                     id="senderCity"
                     value={formData.senderCity}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label>Country</Label>
+                <div className="mb-2">
+                  <Label htmlFor="senderCountry" className="font-semibold">
+                    Country
+                  </Label>
                   <Input
                     type="text"
                     name="senderCountry"
                     id="senderCountry"
                     value={formData.senderCountry}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
                 <div>
-                  <Label>Customs reference</Label>
+                  <Label
+                    htmlFor="senderCustomsReference"
+                    className="font-semibold"
+                  >
+                    Customs reference
+                  </Label>
                   <Input
                     type="text"
                     name="senderCustomsReference"
                     id="senderCustomsReference"
                     value={formData.senderCustomsReference}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
               </div>
               <div>
-                <p className="font-semibold">Recipient</p>
-                <div>
-                  <Label htmlFor="recipientName">Name</Label>
+                <p className="font-bold">Recipient</p>
+                <div className="mb-2">
+                  <Label htmlFor="recipientName" className="font-semibold">
+                    Name
+                  </Label>
                   <Input
                     type="text"
                     id="recipientName"
@@ -508,181 +768,501 @@ export default function Home() {
                     className="px-2 border border-gray-300 rounded w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
                   />
                 </div>
-                <div>
-                  <Label>Business</Label>
+                <div className="mb-2">
+                  <Label htmlFor="recipientBusiness" className="font-semibold">
+                    Business
+                  </Label>
                   <Input
                     type="text"
                     name="recipientBusiness"
                     id="recipientBusiness"
                     value={formData.recipientBusiness}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label>Street</Label>
+                <div className="mb-2">
+                  <Label htmlFor="recipientStreet" className="font-semibold">
+                    Street
+                  </Label>
                   <Input
                     type="text"
                     name="recipientStreet"
                     id="recipientStreet"
                     value={formData.recipientStreet}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label>Postcode</Label>
+                <div className="mb-2">
+                  <Label htmlFor="recipientPostcode" className="font-semibold">
+                    Postcode
+                  </Label>
                   <Input
                     type="text"
                     name="recipientPostcode"
                     id="recipientPostcode"
                     value={formData.recipientPostcode}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label>City</Label>
+                <div className="mb-2">
+                  <Label htmlFor="recipientCity" className="font-semibold">
+                    City
+                  </Label>
                   <Input
                     type="text"
                     name="recipientCity"
                     id="recipientCity"
                     value={formData.recipientCity}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div>
-                  <Label>Country</Label>
+                <div className="mb-2">
+                  <Label htmlFor="recipientCountry" className="font-semibold">
+                    Country
+                  </Label>
                   <Input
                     type="text"
                     name="recipientCountry"
                     id="recipientCountry"
                     value={formData.recipientCountry}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
-                <div className="col-span-2">
-                  <Label>Recipient email</Label>
+                <div>
+                  <Label htmlFor="recipientEmail" className="font-semibold">
+                    Recipient email
+                  </Label>
                   <Input
                     type="text"
                     name="recipientEmail"
                     id="recipientEmail"
                     value={formData.recipientEmail}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
               </div>
             </div>
             <hr className="col-span-2 mb-4" />
-            <div className="grid grid-cols-7 gap-4 mb-4">
+            <div className="grid grid-cols-7 gap-4 mb-2">
               <div className="col-span-2">
-                <Label>Description</Label>
+                <Label htmlFor="contentDescription1" className="font-semibold">
+                  Description
+                </Label>
                 <Input
                   type="text"
-                  name="contentDescription"
-                  id="contentDescription"
-                  value={formData.contentDescription}
+                  name="contentDescription1"
+                  id="contentDescription1"
+                  value={formData.contentDescription1}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
               <div>
-                <Label>Qty</Label>
+                <Label htmlFor="quantity1" className="font-semibold">
+                  Qty
+                </Label>
                 <Input
                   type="number"
-                  name="quantity"
-                  id="quantity"
-                  value={formData.quantity}
+                  name="quantity1"
+                  id="quantity1"
+                  value={formData.quantity1}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
               <div>
-                <Label>Net weight</Label>
+                <Label htmlFor="netWeight1" className="font-semibold">
+                  Net weight
+                </Label>
                 <Input
                   type="text"
-                  name="netWeight"
-                  id="netWeight"
-                  value={formData.netWeight}
+                  name="netWeight1"
+                  id="netWeight1"
+                  value={formData.netWeight1}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
               <div>
-                <Label>Value</Label>
+                <Label htmlFor="value1" className="font-semibold">
+                  Value
+                </Label>
                 <Input
                   type="text"
-                  name="value"
-                  id="value"
-                  value={formData.value}
+                  name="value1"
+                  id="value1"
+                  value={formData.value1}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
               <div>
-                <Label>HS tariff #</Label>
+                <Label htmlFor="HSTariffNumber1" className="font-semibold">
+                  HS tariff #
+                </Label>
                 <Input
                   type="text"
-                  name="HSTariffNumber"
-                  id="HSTariffNumber"
-                  value={formData.HSTariffNumber}
+                  name="HSTariffNumber1"
+                  id="HSTariffNumber1"
+                  value={formData.HSTariffNumber1}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
               <div>
-                <Label>Country</Label>
+                <Label
+                  htmlFor="CountryOfOriginOfGoods1"
+                  className="font-semibold"
+                >
+                  Country
+                </Label>
                 <Input
                   type="text"
-                  name="CountryOfOriginOfGoods"
-                  id="CountryOfOriginOfGoods"
-                  value={formData.CountryOfOriginOfGoods}
+                  name="CountryOfOriginOfGoods1"
+                  id="CountryOfOriginOfGoods1"
+                  value={formData.CountryOfOriginOfGoods1}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-7 gap-4 mb-2">
+              <div className="col-span-2">
+                <Label htmlFor="contentDescription2" className="font-semibold">
+                  Description
+                </Label>
+                <Input
+                  type="text"
+                  name="contentDescription2"
+                  id="contentDescription2"
+                  value={formData.contentDescription2}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
               <div>
-                <Label>Total weight</Label>
+                <Label htmlFor="quantity2" className="font-semibold">
+                  Qty
+                </Label>
+                <Input
+                  type="number"
+                  name="quantity2"
+                  id="quantity2"
+                  value={formData.quantity2}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="netWeight2" className="font-semibold">
+                  Net weight
+                </Label>
+                <Input
+                  type="text"
+                  name="netWeight2"
+                  id="netWeight2"
+                  value={formData.netWeight2}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="value2" className="font-semibold">
+                  Value
+                </Label>
+                <Input
+                  type="text"
+                  name="value2"
+                  id="value2"
+                  value={formData.value2}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="HSTariffNumber2" className="font-semibold">
+                  HS tariff #
+                </Label>
+                <Input
+                  type="text"
+                  name="HSTariffNumber2"
+                  id="HSTariffNumber2"
+                  value={formData.HSTariffNumber2}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="CountryOfOriginOfGoods2"
+                  className="font-semibold"
+                >
+                  Country
+                </Label>
+                <Input
+                  type="text"
+                  name="CountryOfOriginOfGoods2"
+                  id="CountryOfOriginOfGoods2"
+                  value={formData.CountryOfOriginOfGoods2}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-7 gap-4 mb-2">
+              <div className="col-span-2">
+                <Label htmlFor="contentDescription3" className="font-semibold">
+                  Description
+                </Label>
+                <Input
+                  type="text"
+                  name="contentDescription3"
+                  id="contentDescription3"
+                  value={formData.contentDescription3}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="quantity3" className="font-semibold">
+                  Qty
+                </Label>
+                <Input
+                  type="number"
+                  name="quantity3"
+                  id="quantity3"
+                  value={formData.quantity3}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="netWeight3" className="font-semibold">
+                  Net weight
+                </Label>
+                <Input
+                  type="text"
+                  name="netWeight3"
+                  id="netWeight3"
+                  value={formData.netWeight3}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="value3" className="font-semibold">
+                  Value
+                </Label>
+                <Input
+                  type="text"
+                  name="value3"
+                  id="value3"
+                  value={formData.value3}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="HSTariffNumber3" className="font-semibold">
+                  HS tariff #
+                </Label>
+                <Input
+                  type="text"
+                  name="HSTariffNumber3"
+                  id="HSTariffNumber3"
+                  value={formData.HSTariffNumber3}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="CountryOfOriginOfGoods3"
+                  className="font-semibold"
+                >
+                  Country
+                </Label>
+                <Input
+                  type="text"
+                  name="CountryOfOriginOfGoods3"
+                  id="CountryOfOriginOfGoods3"
+                  value={formData.CountryOfOriginOfGoods3}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-7 gap-4 mb-4">
+              <div className="col-span-2">
+                <Label htmlFor="contentDescription4" className="font-semibold">
+                  Description
+                </Label>
+                <Input
+                  type="text"
+                  name="contentDescription4"
+                  id="contentDescription4"
+                  value={formData.contentDescription4}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="quantity4" className="font-semibold">
+                  Qty
+                </Label>
+                <Input
+                  type="number"
+                  name="quantity4"
+                  id="quantity4"
+                  value={formData.quantity4}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="netWeight4" className="font-semibold">
+                  Net weight
+                </Label>
+                <Input
+                  type="text"
+                  name="netWeight4"
+                  id="netWeight4"
+                  value={formData.netWeight4}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="value4" className="font-semibold">
+                  Value
+                </Label>
+                <Input
+                  type="text"
+                  name="value4"
+                  id="value4"
+                  value={formData.value4}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label htmlFor="HSTariffNumber4" className="font-semibold">
+                  HS tariff #
+                </Label>
+                <Input
+                  type="text"
+                  name="HSTariffNumber4"
+                  id="HSTariffNumber4"
+                  value={formData.HSTariffNumber4}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="CountryOfOriginOfGoods4"
+                  className="font-semibold"
+                >
+                  Country
+                </Label>
+                <Input
+                  type="text"
+                  name="CountryOfOriginOfGoods4"
+                  id="CountryOfOriginOfGoods4"
+                  value={formData.CountryOfOriginOfGoods4}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+            </div>
+            <hr className="col-span-2 mb-4" />
+            <div className="grid grid-cols-4 gap-4 mb-2">
+              <div>
+                <Label htmlFor="totalWeight" className="font-semibold">
+                  Total gross weight
+                </Label>
                 <Input
                   type="text"
                   name="totalWeight"
                   id="totalWeight"
                   value={formData.totalWeight}
                   onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
               <div>
-                <Label>Total value</Label>
+                <Label htmlFor="totalValue" className="font-semibold">
+                  Total value
+                </Label>
                 <Input
                   type="text"
                   name="totalValue"
                   id="totalValue"
-                  value={
-                    (
-                      parseInt(formData.value) * Number(formData.quantity)
-                    ).toString() + " EUR"
-                  }
+                  value={totalValue}
                   disabled
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                  className="border border-gray-300 rounded w-full text-neutral-900"
                 />
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
-                <Label>Category of Item</Label>
+                <Label htmlFor="postalCharges" className="font-semibold">
+                  Postal charges
+                </Label>
+                <Input
+                  type="text"
+                  name="postalCharges"
+                  id="postalCharges"
+                  value={formData.postalCharges}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded w-full text-neutral-900"
+                />
+              </div>
+              <div className="flex flex-col justify-between">
+                <Label className="font-semibold">Date</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant={"outline"}
+                      className={`justify-start text-left ${
+                        !formData.date && "text-muted-foreground"
+                      }`}
+                    >
+                      {formData.date || <span>Pick a date</span>}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0">
+                    <Calendar
+                      mode="single"
+                      selected={date}
+                      onSelect={(selectedDate) => {
+                        setDate(selectedDate);
+                        setFormData({
+                          ...formData,
+                          date: selectedDate
+                            ? format(selectedDate, "dd/MM/yyyy")
+                            : "",
+                        });
+                      }}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4 mb-2">
+              <div>
+                <Label className="font-semibold">Category of item</Label>
                 <Select
                   name="categoryOfItem"
                   value={formData.categoryOfItem}
                   onValueChange={(value) =>
                     setFormData({ ...formData, categoryOfItem: value })
                   }
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select a category" />
@@ -709,20 +1289,71 @@ export default function Home() {
               </div>
               {formData.categoryOfItem === "other" && (
                 <div>
-                  <Label>Explaination</Label>
+                  <Label htmlFor="explaination" className="font-semibold">
+                    Explaination
+                  </Label>
                   <Input
                     type="text"
                     name="explaination"
+                    id="explaination"
                     value={formData.explaination}
                     onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
+                    className="border border-gray-300 rounded w-full text-neutral-900"
                   />
                 </div>
               )}
             </div>
-            <div className="grid grid-cols-6 gap-4 mb-4">
+            <div className="mb-4">
+              <Label htmlFor="comments" className="font-semibold">
+                Comments
+              </Label>
+              <Input
+                type="text"
+                name="comments"
+                id="comments"
+                value={formData.comments}
+                onChange={handleChange}
+                className="border border-gray-300 rounded w-full text-neutral-900"
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-4 mb-2">
               <div className="flex items-center gap-2">
-                <Label htmlFor="invoice">Invoice</Label>
+                <Checkbox
+                  name="licence"
+                  id="licence"
+                  checked={formData.licence}
+                  onCheckedChange={(checked) =>
+                    handleChange({
+                      target: {
+                        name: "licence",
+                        value: checked ? "true" : "false",
+                        type: "checkbox",
+                        checked: checked,
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <Label htmlFor="licence">Licence</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  name="certificate"
+                  id="certificate"
+                  checked={formData.certificate}
+                  onCheckedChange={(checked) =>
+                    handleChange({
+                      target: {
+                        name: "certificate",
+                        value: checked ? "true" : "false",
+                        type: "checkbox",
+                        checked: checked,
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <Label htmlFor="certificate">Certificate</Label>
+              </div>
+              <div className="flex items-center gap-2">
                 <Checkbox
                   name="invoice"
                   id="invoice"
@@ -738,71 +1369,73 @@ export default function Home() {
                     } as React.ChangeEvent<HTMLInputElement>)
                   }
                 />
+                <Label htmlFor="invoice">Invoice</Label>
               </div>
-              {formData.invoice && (
-                <div>
-                  <Label>Invoice number</Label>
-                  <Input
-                    type="text"
-                    name="invoiceNumber"
-                    value={formData.invoiceNumber}
-                    onChange={handleChange}
-                    className="px-2 border border-gray-300 rounded w-full text-neutral-900"
-                  />
-                </div>
-              )}
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-3 gap-4">
               <div>
-                <Label>Postal charges</Label>
-                <Input
-                  type="text"
-                  name="postalCharges"
-                  value={formData.postalCharges}
-                  onChange={handleChange}
-                  className="px-2 border border-gray-300 rounded w-full text-neutral-900"
-                />
-              </div>
-              <div className="flex flex-col justify-between">
-                <Label>Date</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={`justify-start text-left ${
-                        !formData.date && "text-muted-foreground"
-                      }`}
-                    >
-                      <CalendarIcon />
-                      {formData.date || <span>Pick a date</span>}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={(selectedDate) => {
-                        setDate(selectedDate);
-                        setFormData({
-                          ...formData,
-                          date: selectedDate
-                            ? format(selectedDate, "dd/MM/yyyy")
-                            : "",
-                        });
-                      }}
-                      initialFocus
+                {formData.licence && (
+                  <div>
+                    <Label htmlFor="licenceNumber" className="font-semibold">
+                      Licence number
+                    </Label>
+                    <Input
+                      type="text"
+                      name="licenceNumber"
+                      id="licenceNumber"
+                      value={formData.licenceNumber}
+                      onChange={handleChange}
+                      className="border border-gray-300 rounded w-full text-neutral-900"
                     />
-                  </PopoverContent>
-                </Popover>
+                  </div>
+                )}
+              </div>
+              <div>
+                {formData.certificate && (
+                  <div>
+                    <Label
+                      htmlFor="certificateNumber"
+                      className="font-semibold"
+                    >
+                      Certificate number
+                    </Label>
+                    <Input
+                      type="text"
+                      name="certificateNumber"
+                      id="certificateNumber"
+                      value={formData.certificateNumber}
+                      onChange={handleChange}
+                      className="border border-gray-300 rounded w-full text-neutral-900"
+                    />
+                  </div>
+                )}
+              </div>
+              <div>
+                {formData.invoice && (
+                  <div>
+                    <Label htmlFor="invoiceNumber" className="font-semibold">
+                      Invoice number
+                    </Label>
+                    <Input
+                      type="text"
+                      name="invoiceNumber"
+                      id="invoiceNumber"
+                      value={formData.invoiceNumber}
+                      onChange={handleChange}
+                      className="border border-gray-300 rounded w-full text-neutral-900"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </form>
         </div>
-        <div className="flex flex-col justify-center items-center col-span-2">
+        {/* <div className="order-first md:order-last flex flex-col justify-center items-center col-span-5 md:col-span-2"> */}
+        <div className="order-first md:order-last w-full h-96 basis-2/5 my-auto">
           {pdfUrl && (
             <iframe
               src={pdfUrl}
-              className="w-full h-full border border-gray-300 rounded-lg"
+              className="sticky top-1/2 w-full h-full border border-gray-300 rounded-lg m-auto"
             ></iframe>
           )}
         </div>
