@@ -16,3 +16,7 @@ The [CN23 PDF Generator](https://cn23.ragone.dev) project is designed to help yo
 ## Usage
 
 To generate a CN23 PDF, visit the [CN23 PDF Generator](https://cn23.ragone.dev) website and use the application directly in your browser. The app is secure as it works locally in the browser, without sharing any data with any cloud or external server.
+
+## Contribution
+
+The code is still a work in progress, so it might be a bit rough around the edges. Contributions are welcome! If you'd like to help, feel free to open a Pull Request. For any questions or issues, please open an Issue on GitHub.

@@ -214,6 +214,7 @@ const Form: React.FC<FormProps> = ({
               name="recipientName"
               value={formData.recipientName}
               onChange={handleChange}
+              autoComplete="off"
               className="px-2 border border-gray-300 rounded w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
             />
           </div>
@@ -227,6 +228,7 @@ const Form: React.FC<FormProps> = ({
               id="recipientBusiness"
               value={formData.recipientBusiness}
               onChange={handleChange}
+              autoComplete="off"
               className="border border-gray-300 rounded w-full text-neutral-900"
             />
           </div>
@@ -240,6 +242,7 @@ const Form: React.FC<FormProps> = ({
               id="recipientStreet"
               value={formData.recipientStreet}
               onChange={handleChange}
+              autoComplete="off"
               className="border border-gray-300 rounded w-full text-neutral-900"
             />
           </div>
@@ -253,6 +256,7 @@ const Form: React.FC<FormProps> = ({
               id="recipientPostcode"
               value={formData.recipientPostcode}
               onChange={handleChange}
+              autoComplete="off"
               className="border border-gray-300 rounded w-full text-neutral-900"
             />
           </div>
@@ -266,6 +270,7 @@ const Form: React.FC<FormProps> = ({
               id="recipientCity"
               value={formData.recipientCity}
               onChange={handleChange}
+              autoComplete="off"
               className="border border-gray-300 rounded w-full text-neutral-900"
             />
           </div>
@@ -279,6 +284,7 @@ const Form: React.FC<FormProps> = ({
               id="recipientCountry"
               value={formData.recipientCountry}
               onChange={handleChange}
+              autoComplete="off"
               className="border border-gray-300 rounded w-full text-neutral-900"
             />
           </div>
@@ -292,6 +298,7 @@ const Form: React.FC<FormProps> = ({
               id="recipientEmail"
               value={formData.recipientEmail}
               onChange={handleChange}
+              autoComplete="off"
               className="border border-gray-300 rounded w-full text-neutral-900"
             />
           </div>
@@ -374,6 +381,7 @@ const Form: React.FC<FormProps> = ({
             id="CountryOfOriginOfGoods1"
             value={formData.CountryOfOriginOfGoods1}
             onChange={handleChange}
+            autoComplete="off"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -454,6 +462,7 @@ const Form: React.FC<FormProps> = ({
             id="CountryOfOriginOfGoods2"
             value={formData.CountryOfOriginOfGoods2}
             onChange={handleChange}
+            autoComplete="off"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -534,6 +543,7 @@ const Form: React.FC<FormProps> = ({
             id="CountryOfOriginOfGoods3"
             value={formData.CountryOfOriginOfGoods3}
             onChange={handleChange}
+            autoComplete="off"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -614,6 +624,7 @@ const Form: React.FC<FormProps> = ({
             id="CountryOfOriginOfGoods4"
             value={formData.CountryOfOriginOfGoods4}
             onChange={handleChange}
+            autoComplete="off"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -656,6 +667,7 @@ const Form: React.FC<FormProps> = ({
             id="postalCharges"
             value={formData.postalCharges}
             onChange={handleChange}
+            autoComplete="off"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
