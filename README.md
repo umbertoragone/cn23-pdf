@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e0a1267f-1b3d-495e-b520-912b8b25dae5/deploy-status)](https://app.netlify.com/sites/cn23-pdf/deploys)
+
 # CN23 PDF Generator
 
 ## Overview
