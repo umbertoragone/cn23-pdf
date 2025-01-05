@@ -2,10 +2,10 @@
 import { useState, useEffect, Suspense } from "react";
 import * as React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import PDFViewer from "@/components/PDFViewer";
 import Form from "@/components/Form";
 import { updatePdf } from "@/utils/pdfUtils";
+import Footer from "@/components/Footer";
 
 function HomeContent() {
   const router = useRouter();
@@ -84,28 +84,14 @@ function HomeContent() {
   }, [formData]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-neutral-100 dark:bg-neutral-900 p-6">
+    <div className="flex flex-col justify-center items-center md:h-screen bg-neutral-100 dark:bg-neutral-900 p-6">
       <div className="flex flex-col md:flex-row items-stretch w-full h-screen gap-4">
-        <div className="order-last md:order-first basis-3/5 overflow-y-scroll">
+        <div className="basis-2/3 md:basis-3/5 overflow-y-scroll">
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
-        <div className="order-first md:order-last w-full h-[25.6rem] basis-2/5 my-auto">
+        <div className="flex flex-col justify-between w-full h-full basis-1/3 md:basis-2/5">
           {pdfUrl && <PDFViewer pdfUrl={pdfUrl} />}
-          <div className="flex justify-center items-center mt-4">
-            <Button
-              className="bg-green-600 font-bold"
-              onClick={() => {
-                if (pdfUrl) {
-                  const link = document.createElement("a");
-                  link.href = pdfUrl;
-                  link.download = "cn23.pdf";
-                  link.click();
-                }
-              }}
-            >
-              Download
-            </Button>
-          </div>
+          <Footer />
         </div>
       </div>
     </div>
