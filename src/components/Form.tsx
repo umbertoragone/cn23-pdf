@@ -76,16 +76,9 @@ interface FormData {
 interface FormProps {
   formData: FormData;
   setFormData: (formData: FormData) => void;
-  // date: Date | null;
-  // setDate: (date: Date | undefined) => void;
 }
 
-const Form: React.FC<FormProps> = ({
-  formData,
-  setFormData,
-  // date,
-  // setDate,
-}) => {
+const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -103,7 +96,7 @@ const Form: React.FC<FormProps> = ({
     ).toString() + " EUR";
   return (
     <form className="bg-white dark:bg-neutral-800 rounded-lg p-6">
-      <h1 className="text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
+      <h1 className="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
         CN23 PDF Generator
       </h1>
       <div className="grid grid-cols-2 gap-4 mb-4">
@@ -305,8 +298,8 @@ const Form: React.FC<FormProps> = ({
         </div>
       </div>
       <hr className="col-span-2 mb-4" />
-      <div className="grid grid-cols-7 gap-4 mb-2">
-        <div className="col-span-2">
+      <div className="flex justify-between gap-2 mb-2">
+        <div className="w-96">
           <Label htmlFor="contentDescription1" className="font-semibold">
             Description
           </Label>
@@ -319,7 +312,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-24">
           <Label htmlFor="quantity1" className="font-semibold">
             Qty
           </Label>
@@ -332,7 +325,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="netWeight1" className="font-semibold">
             Net weight
           </Label>
@@ -342,10 +335,11 @@ const Form: React.FC<FormProps> = ({
             id="netWeight1"
             value={formData.netWeight1}
             onChange={handleChange}
+            placeholder="0.000 kg"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="value1" className="font-semibold">
             Value
           </Label>
@@ -355,10 +349,11 @@ const Form: React.FC<FormProps> = ({
             id="value1"
             value={formData.value1}
             onChange={handleChange}
+            placeholder="0 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-40">
           <Label htmlFor="HSTariffNumber1" className="font-semibold">
             HS tariff #
           </Label>
@@ -371,7 +366,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-44">
           <Label htmlFor="CountryOfOriginOfGoods1" className="font-semibold">
             Country
           </Label>
@@ -386,8 +381,8 @@ const Form: React.FC<FormProps> = ({
           />
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-4 mb-2">
-        <div className="col-span-2">
+      <div className="flex justify-between gap-2 mb-2">
+        <div className="w-96">
           <Label htmlFor="contentDescription2" className="font-semibold">
             Description
           </Label>
@@ -400,7 +395,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-24">
           <Label htmlFor="quantity2" className="font-semibold">
             Qty
           </Label>
@@ -413,7 +408,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="netWeight2" className="font-semibold">
             Net weight
           </Label>
@@ -423,10 +418,11 @@ const Form: React.FC<FormProps> = ({
             id="netWeight2"
             value={formData.netWeight2}
             onChange={handleChange}
+            placeholder="0.000 kg"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="value2" className="font-semibold">
             Value
           </Label>
@@ -436,10 +432,11 @@ const Form: React.FC<FormProps> = ({
             id="value2"
             value={formData.value2}
             onChange={handleChange}
+            placeholder="0 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-40">
           <Label htmlFor="HSTariffNumber2" className="font-semibold">
             HS tariff #
           </Label>
@@ -452,7 +449,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-44">
           <Label htmlFor="CountryOfOriginOfGoods2" className="font-semibold">
             Country
           </Label>
@@ -467,8 +464,8 @@ const Form: React.FC<FormProps> = ({
           />
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-4 mb-2">
-        <div className="col-span-2">
+      <div className="flex justify-between gap-2 mb-2">
+        <div className="w-96">
           <Label htmlFor="contentDescription3" className="font-semibold">
             Description
           </Label>
@@ -481,7 +478,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-24">
           <Label htmlFor="quantity3" className="font-semibold">
             Qty
           </Label>
@@ -494,7 +491,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="netWeight3" className="font-semibold">
             Net weight
           </Label>
@@ -504,10 +501,11 @@ const Form: React.FC<FormProps> = ({
             id="netWeight3"
             value={formData.netWeight3}
             onChange={handleChange}
+            placeholder="0.000 kg"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="value3" className="font-semibold">
             Value
           </Label>
@@ -517,10 +515,11 @@ const Form: React.FC<FormProps> = ({
             id="value3"
             value={formData.value3}
             onChange={handleChange}
+            placeholder="0 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-40">
           <Label htmlFor="HSTariffNumber3" className="font-semibold">
             HS tariff #
           </Label>
@@ -533,7 +532,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-44">
           <Label htmlFor="CountryOfOriginOfGoods3" className="font-semibold">
             Country
           </Label>
@@ -548,8 +547,8 @@ const Form: React.FC<FormProps> = ({
           />
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-4 mb-4">
-        <div className="col-span-2">
+      <div className="flex justify-between gap-2 mb-2">
+        <div className="w-96">
           <Label htmlFor="contentDescription4" className="font-semibold">
             Description
           </Label>
@@ -562,7 +561,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-24">
           <Label htmlFor="quantity4" className="font-semibold">
             Qty
           </Label>
@@ -575,7 +574,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="netWeight4" className="font-semibold">
             Net weight
           </Label>
@@ -585,10 +584,11 @@ const Form: React.FC<FormProps> = ({
             id="netWeight4"
             value={formData.netWeight4}
             onChange={handleChange}
+            placeholder="0.000 kg"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-36">
           <Label htmlFor="value4" className="font-semibold">
             Value
           </Label>
@@ -598,10 +598,11 @@ const Form: React.FC<FormProps> = ({
             id="value4"
             value={formData.value4}
             onChange={handleChange}
+            placeholder="0 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-40">
           <Label htmlFor="HSTariffNumber4" className="font-semibold">
             HS tariff #
           </Label>
@@ -614,7 +615,7 @@ const Form: React.FC<FormProps> = ({
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
-        <div>
+        <div className="w-44">
           <Label htmlFor="CountryOfOriginOfGoods4" className="font-semibold">
             Country
           </Label>
@@ -641,6 +642,7 @@ const Form: React.FC<FormProps> = ({
             id="totalWeight"
             value={formData.totalWeight}
             onChange={handleChange}
+            placeholder="0.000 kg"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -668,6 +670,7 @@ const Form: React.FC<FormProps> = ({
             value={formData.postalCharges}
             onChange={handleChange}
             autoComplete="off"
+            placeholder="0 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -728,17 +731,21 @@ const Form: React.FC<FormProps> = ({
           </Select>
         </div>
         <div>
-          <Label htmlFor="explaination" className="font-semibold">
-            Explaination
-          </Label>
-          <Input
-            type="text"
-            name="explaination"
-            id="explaination"
-            value={formData.explaination}
-            onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
-          />
+          {formData.categoryOfItem === "other" && (
+            <>
+              <Label htmlFor="explaination" className="font-semibold">
+                Explaination
+              </Label>
+              <Input
+                type="text"
+                name="explaination"
+                id="explaination"
+                value={formData.explaination}
+                onChange={handleChange}
+                className="border border-gray-300 rounded w-full text-neutral-900"
+              />
+            </>
+          )}
         </div>
       </div>
       <div className="mb-4">

@@ -89,7 +89,7 @@ function HomeContent() {
         <div className="order-last md:order-first basis-3/5 overflow-y-scroll">
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
-        <div className="order-first md:order-last w-full h-96 basis-2/5 my-auto">
+        <div className="order-first md:order-last w-full h-[25.6rem] basis-2/5 my-auto">
           {pdfUrl && <PDFViewer pdfUrl={pdfUrl} />}
           <div className="flex justify-center items-center mt-4">
             <Button
