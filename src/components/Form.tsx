@@ -96,7 +96,8 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       parseValue(formData.value2) * (Number(formData.quantity2) || 0) +
       parseValue(formData.value3) * (Number(formData.quantity3) || 0) +
       parseValue(formData.value4) * (Number(formData.quantity4) || 0)
-    ).toFixed(2) + " EUR";
+    ).toFixed(2) + formData.value1.replace(/[0-9.]/g, "");
+
   return (
     <form className="bg-white dark:bg-neutral-800 p-6">
       <h1 className="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
