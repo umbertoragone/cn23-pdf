@@ -87,15 +87,18 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
     });
   };
 
+  const parseValue = (value: string) =>
+    parseFloat(value.replace(/[^\d.-]/g, "")) || 0;
+
   const totalValue =
     (
-      (parseInt(formData.value1) || 0) * (Number(formData.quantity1) || 0) +
-      (parseInt(formData.value2) || 0) * (Number(formData.quantity2) || 0) +
-      (parseInt(formData.value3) || 0) * (Number(formData.quantity3) || 0) +
-      (parseInt(formData.value4) || 0) * (Number(formData.quantity4) || 0)
-    ).toString() + " EUR";
+      parseValue(formData.value1) * (Number(formData.quantity1) || 0) +
+      parseValue(formData.value2) * (Number(formData.quantity2) || 0) +
+      parseValue(formData.value3) * (Number(formData.quantity3) || 0) +
+      parseValue(formData.value4) * (Number(formData.quantity4) || 0)
+    ).toFixed(2) + " EUR";
   return (
-    <form className="bg-white dark:bg-neutral-800 rounded-lg p-6">
+    <form className="bg-white dark:bg-neutral-800 p-6">
       <h1 className="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
         CN23 PDF Generator
       </h1>
@@ -349,7 +352,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="value1"
             value={formData.value1}
             onChange={handleChange}
-            placeholder="0 EUR"
+            placeholder="0.00 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -432,7 +435,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="value2"
             value={formData.value2}
             onChange={handleChange}
-            placeholder="0 EUR"
+            placeholder="0.00 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -515,7 +518,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="value3"
             value={formData.value3}
             onChange={handleChange}
-            placeholder="0 EUR"
+            placeholder="0.00 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -598,7 +601,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="value4"
             value={formData.value4}
             onChange={handleChange}
-            placeholder="0 EUR"
+            placeholder="0.00 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -670,7 +673,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.postalCharges}
             onChange={handleChange}
             autoComplete="off"
-            placeholder="0 EUR"
+            placeholder="0.00 EUR"
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
         </div>
@@ -685,6 +688,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             <PopoverContent className="w-auto p-0">
               <Calendar
                 mode="single"
+                weekStartsOn={1}
                 selected={formData.date ? new Date(formData.date) : undefined}
                 onSelect={(date) =>
                   setFormData({
