@@ -50,7 +50,7 @@ function HomeContent() {
     HSTariffNumber4: searchParams.get("HSTariffNumber4") || "",
     CountryOfOriginOfGoods4: searchParams.get("CountryOfOriginOfGoods4") || "",
     totalWeight: searchParams.get("totalWeight") || "",
-    totalValue: "",
+    totalValue: searchParams.get("totalValue") || "",
     categoryOfItem: searchParams.get("categoryOfItem") || "",
     explaination: searchParams.get("explaination") || "",
     comments: searchParams.get("comments") || "",
@@ -89,7 +89,7 @@ function HomeContent() {
         <div className="basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg bg-white dark:bg-neutral-800">
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
-        <div className="flex flex-col justify-between w-full h-full basis-1/3 md:basis-2/5 bg-white dark:bg-neutral-800">
+        <div className="flex flex-col justify-between w-full h-full basis-1/3 md:basis-2/5">
           {pdfUrl && <PDFViewer pdfUrl={pdfUrl} />}
           <Footer />
         </div>

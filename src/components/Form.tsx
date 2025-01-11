@@ -79,24 +79,31 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
-
   const parseValue = (value: string) =>
     parseFloat(value.replace(/[^\d.-]/g, "")) || 0;
 
-  const totalValue =
-    (
-      parseValue(formData.value1) * (Number(formData.quantity1) || 0) +
-      parseValue(formData.value2) * (Number(formData.quantity2) || 0) +
-      parseValue(formData.value3) * (Number(formData.quantity3) || 0) +
-      parseValue(formData.value4) * (Number(formData.quantity4) || 0)
-    ).toFixed(2) + formData.value1.replace(/[0-9.]/g, "");
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    const updatedFormData = {
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    };
+    const totalValue =
+      (
+        parseValue(updatedFormData.value1) *
+          (Number(updatedFormData.quantity1) || 0) +
+        parseValue(updatedFormData.value2) *
+          (Number(updatedFormData.quantity2) || 0) +
+        parseValue(updatedFormData.value3) *
+          (Number(updatedFormData.quantity3) || 0) +
+        parseValue(updatedFormData.value4) *
+          (Number(updatedFormData.quantity4) || 0)
+      ).toFixed(2) + updatedFormData.value1.replace(/[0-9.]/g, "");
+    setFormData({
+      ...updatedFormData,
+      totalValue: totalValue,
+    });
+  };
 
   return (
     <form className="bg-white dark:bg-neutral-800 p-6">
@@ -658,7 +665,9 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             type="text"
             name="totalValue"
             id="totalValue"
-            value={totalValue}
+            value={formData.totalValue}
+            onChange={handleChange}
+            placeholder="0.00 EUR"
             disabled
             className="border border-gray-300 rounded w-full text-neutral-900"
           />
