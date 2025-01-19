@@ -8,7 +8,7 @@ interface PDFViewerProps {
 
 export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   return (
-    <div className="bg-white dark:bg-neutral-800 text-black dark:text-white p-4 rounded-lg md:sticky md:top-1/2 md:transform md:-translate-y-1/2">
+    <div className="p-4 rounded-lg md:sticky md:top-1/2 md:transform md:-translate-y-1/2">
       <iframe
         src={pdfUrl}
         className="w-full h-[30vh] md:h-[25.6rem] border border-gray-300 dark:border-gray-700 rounded-lg m-auto"
