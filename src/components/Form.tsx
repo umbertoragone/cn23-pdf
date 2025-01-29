@@ -90,14 +90,10 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
     };
     const totalValue =
       (
-        parseValue(updatedFormData.value1) *
-          (Number(updatedFormData.quantity1) || 0) +
-        parseValue(updatedFormData.value2) *
-          (Number(updatedFormData.quantity2) || 0) +
-        parseValue(updatedFormData.value3) *
-          (Number(updatedFormData.quantity3) || 0) +
-        parseValue(updatedFormData.value4) *
-          (Number(updatedFormData.quantity4) || 0)
+        parseValue(updatedFormData.value1) +
+        parseValue(updatedFormData.value2) +
+        parseValue(updatedFormData.value3) +
+        parseValue(updatedFormData.value4)
       ).toFixed(2) + updatedFormData.value1.replace(/[0-9.]/g, "");
     setFormData({
       ...updatedFormData,
@@ -699,7 +695,11 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               <Calendar
                 mode="single"
                 weekStartsOn={1}
-                selected={formData.date ? new Date(formData.date) : undefined}
+                selected={
+                  formData.date
+                    ? new Date(formData.date.split("/").reverse().join("-"))
+                    : undefined
+                }
                 onSelect={(date) =>
                   setFormData({
                     ...formData,
