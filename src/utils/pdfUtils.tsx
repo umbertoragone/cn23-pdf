@@ -251,7 +251,7 @@ export const updatePdf = async (
 
     if (quantity1) {
       page.drawText(quantity1.toString(), {
-        x: 246,
+        x: quantity1.length == 1 ? 246 : 243,
         y: pageHeight - 243,
         size: 10,
       });
@@ -299,7 +299,7 @@ export const updatePdf = async (
 
     if (quantity2) {
       page.drawText(quantity2.toString(), {
-        x: 246,
+        x: quantity2.length == 1 ? 246 : 243,
         y: pageHeight - 258,
         size: 10,
       });
@@ -347,7 +347,7 @@ export const updatePdf = async (
 
     if (quantity3) {
       page.drawText(quantity3.toString(), {
-        x: 246,
+        x: quantity3.length == 1 ? 246 : 243,
         y: pageHeight - 272.5,
         size: 10,
       });
@@ -395,7 +395,7 @@ export const updatePdf = async (
 
     if (quantity4) {
       page.drawText(quantity4.toString(), {
-        x: 246,
+        x: quantity4.length == 1 ? 246 : 243,
         y: pageHeight - 287,
         size: 10,
       });
