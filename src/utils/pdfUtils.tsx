@@ -441,7 +441,7 @@ export const updatePdf = async (
       });
     }
 
-    if (totalValue) {
+    if (totalValue && totalValue !== "0.00") {
       page.drawText(totalValue, {
         x: 330,
         y: pageHeight - 307,
