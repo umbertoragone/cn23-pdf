@@ -85,7 +85,7 @@ function HomeContent() {
 
   return (
     <div className="flex flex-col justify-center items-center md:h-screen bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
-      <div className="flex flex-col md:flex-row items-stretch w-full h-screen gap-4 md:p-8">
+      <div className="flex flex-col md:flex-row items-stretch w-full h-screen gap-4 sm:p-8">
         <div className="basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg bg-white dark:bg-neutral-800">
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
