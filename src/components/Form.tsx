@@ -305,7 +305,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
       </div>
       <hr className="col-span-2 mb-4" />
-      <div className="flex justify-between gap-2 mb-2">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription1" className="font-semibold">
             Description
@@ -388,7 +388,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
       </div>
-      <div className="flex justify-between gap-2 mb-2">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription2" className="font-semibold">
             Description
@@ -471,7 +471,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
       </div>
-      <div className="flex justify-between gap-2 mb-2">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription3" className="font-semibold">
             Description
@@ -554,7 +554,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
       </div>
-      <div className="flex justify-between gap-2 mb-2">
+      <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription4" className="font-semibold">
             Description
@@ -638,7 +638,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
       </div>
       <hr className="col-span-2 mb-4" />
-      <div className="grid grid-cols-4 gap-4 mb-2">
+      <div className="grid grid-cols-4 items-end gap-4 mb-2">
         <div>
           <Label htmlFor="totalWeight" className="font-semibold">
             Total gross weight
