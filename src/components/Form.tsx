@@ -290,7 +290,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div>
             <Label htmlFor="recipientEmail" className="font-semibold">
-              Recipient email
+              Email/Phone number
             </Label>
             <Input
               type="text"
