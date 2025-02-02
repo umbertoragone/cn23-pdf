@@ -120,7 +120,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.senderName}
               onChange={handleChange}
               autoComplete="name"
-              className="border border-gray-300 rounded w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
+              className="border border-gray-300 rounded-md w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
             />
           </div>
           <div className="mb-2">
@@ -133,7 +133,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderBusiness"
               value={formData.senderBusiness}
               onChange={handleChange}
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -146,7 +146,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderStreet"
               value={formData.senderStreet}
               onChange={handleChange}
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -159,7 +159,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderPostcode"
               value={formData.senderPostcode}
               onChange={handleChange}
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -172,7 +172,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderCity"
               value={formData.senderCity}
               onChange={handleChange}
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -185,7 +185,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderCountry"
               value={formData.senderCountry}
               onChange={handleChange}
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div>
@@ -198,7 +198,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderCustomsReference"
               value={formData.senderCustomsReference}
               onChange={handleChange}
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
         </div>
@@ -215,7 +215,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientName}
               onChange={handleChange}
               autoComplete="off"
-              className="px-2 border border-gray-300 rounded w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
+              className="px-2 border border-gray-300 rounded-md w-full bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100"
             />
           </div>
           <div className="mb-2">
@@ -229,7 +229,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientBusiness}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -243,7 +243,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientStreet}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -257,7 +257,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientPostcode}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -271,7 +271,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientCity}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div className="mb-2">
@@ -285,7 +285,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientCountry}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
           <div>
@@ -299,7 +299,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientEmail}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-gray-300 rounded w-full text-neutral-900"
+              className="border border-gray-300 rounded-md w-full text-neutral-900"
             />
           </div>
         </div>
@@ -316,7 +316,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription1"
             value={formData.contentDescription1}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-24">
@@ -329,7 +329,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="quantity1"
             value={formData.quantity1}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -343,7 +343,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight1}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -357,7 +357,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value1}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-40">
@@ -370,7 +370,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber1"
             value={formData.HSTariffNumber1}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-44">
@@ -384,7 +384,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods1}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
       </div>
@@ -399,7 +399,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription2"
             value={formData.contentDescription2}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-24">
@@ -412,7 +412,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="quantity2"
             value={formData.quantity2}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -426,7 +426,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight2}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -440,7 +440,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value2}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-40">
@@ -453,7 +453,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber2"
             value={formData.HSTariffNumber2}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-44">
@@ -467,7 +467,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods2}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
       </div>
@@ -482,7 +482,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription3"
             value={formData.contentDescription3}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-24">
@@ -495,7 +495,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="quantity3"
             value={formData.quantity3}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -509,7 +509,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight3}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -523,7 +523,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value3}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-40">
@@ -536,7 +536,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber3"
             value={formData.HSTariffNumber3}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-44">
@@ -550,7 +550,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods3}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
       </div>
@@ -565,7 +565,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription4"
             value={formData.contentDescription4}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-24">
@@ -578,7 +578,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="quantity4"
             value={formData.quantity4}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -592,7 +592,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight4}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-36">
@@ -606,7 +606,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value4}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-40">
@@ -619,7 +619,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber4"
             value={formData.HSTariffNumber4}
             onChange={handleChange}
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div className="w-44">
@@ -633,7 +633,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods4}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
       </div>
@@ -650,7 +650,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.totalWeight}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div>
@@ -665,7 +665,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             onChange={handleChange}
             placeholder="0.00 EUR"
             disabled
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
         <div>
@@ -680,14 +680,22 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             onChange={handleChange}
             autoComplete="off"
             placeholder="0.00 EUR"
-            className="border border-gray-300 rounded w-full text-neutral-900"
+            className="border border-gray-300 rounded-md w-full text-neutral-900"
           />
         </div>
-        <div className="flex flex-col justify-between">
-          <Label className="font-semibold">Date</Label>
+        <div className="">
+          <Label className="font-semibold" htmlFor="date">
+            Date
+          </Label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant={"outline"} className={`justify-start text-left`}>
+              <Button
+                variant={"outline"}
+                id="date"
+                className={`justify-start text-left border border-gray-300 rounded-md w-full ${
+                  !formData.date && " text-muted-foreground"
+                }`}
+              >
                 <span>{formData.date || "Pick a date"}</span>
               </Button>
             </PopoverTrigger>
@@ -727,7 +735,11 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               } as React.ChangeEvent<HTMLInputElement>)
             }
           >
-            <SelectTrigger>
+            <SelectTrigger
+              className={`border border-gray-300 rounded-md w-full ${
+                !formData.categoryOfItem && "text-muted-foreground"
+              }`}
+            >
               <SelectValue placeholder="Select a category" />
             </SelectTrigger>
             <SelectContent>
@@ -756,7 +768,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="explaination"
                 value={formData.explaination}
                 onChange={handleChange}
-                className="border border-gray-300 rounded w-full text-neutral-900"
+                className="border border-gray-300 rounded-md w-full text-neutral-900"
               />
             </>
           )}
@@ -772,7 +784,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           id="comments"
           value={formData.comments}
           onChange={handleChange}
-          className="border border-gray-300 rounded w-full text-neutral-900"
+          className="border border-gray-300 rounded-md w-full text-neutral-900"
         />
       </div>
       <div className="grid grid-cols-3 gap-4 mb-2">
@@ -844,7 +856,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="licenceNumber"
                 value={formData.licenceNumber}
                 onChange={handleChange}
-                className="border border-gray-300 rounded w-full text-neutral-900"
+                className="border border-gray-300 rounded-md w-full text-neutral-900"
               />
             </>
           )}
@@ -861,7 +873,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="certificateNumber"
                 value={formData.certificateNumber}
                 onChange={handleChange}
-                className="border border-gray-300 rounded w-full text-neutral-900"
+                className="border border-gray-300 rounded-md w-full text-neutral-900"
               />
             </>
           )}
@@ -878,7 +890,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="invoiceNumber"
                 value={formData.invoiceNumber}
                 onChange={handleChange}
-                className="border border-gray-300 rounded w-full text-neutral-900"
+                className="border border-gray-300 rounded-md w-full text-neutral-900"
               />
             </>
           )}
