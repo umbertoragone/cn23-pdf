@@ -684,7 +684,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="">
-          <Label className="font-semibold" htmlFor="date">
+          <Label className="font-semibold">
             Date
           </Label>
           <Popover>
