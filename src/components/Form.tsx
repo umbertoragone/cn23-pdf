@@ -88,13 +88,19 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       ...formData,
       [name]: type === "checkbox" ? checked : value,
     };
-    const totalValue =
-      (
-        parseValue(updatedFormData.value1) +
-        parseValue(updatedFormData.value2) +
-        parseValue(updatedFormData.value3) +
-        parseValue(updatedFormData.value4)
-      ).toFixed(2) + updatedFormData.value1.replace(/[0-9.]/g, "");
+    const values = [
+      parseValue(updatedFormData.value1),
+      parseValue(updatedFormData.value2),
+      parseValue(updatedFormData.value3),
+      parseValue(updatedFormData.value4),
+    ];
+
+    console.log(values);
+
+    const totalValue = values.some((value) => value !== 0)
+      ? values.reduce((acc, value) => acc + value, 0).toFixed(2) +
+        updatedFormData.value1.replace(/[0-9.]/g, "")
+      : "";
     setFormData({
       ...updatedFormData,
       totalValue: totalValue,
@@ -684,9 +690,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="">
-          <Label className="font-semibold">
-            Date
-          </Label>
+          <Label className="font-semibold">Date</Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
