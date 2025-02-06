@@ -80,16 +80,17 @@ function HomeContent() {
         return acc;
       }, {} as Record<string, string>)
     ).toString();
-    router.replace(`?${query}`, undefined);
+    // router.replace(`?${query}`, undefined);
+    history.replaceState(null, "", `?${query}`);
   }, [formData]);
 
   return (
     <div className="flex flex-col justify-center items-center md:h-screen bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
-      <div className="flex flex-col md:flex-row items-stretch w-full h-screen gap-4 sm:p-8">
-        <div className="basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg bg-white dark:bg-neutral-800">
+      <div className="flex flex-col md:flex-row items-stretch w-full md:h-screen gap-4 sm:p-8">
+        <div className="border dark:border-neutral-800 basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg text-neutral-950 dark:text-neutral-50 bg-white dark:bg-neutral-950">
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
-        <div className="flex flex-col justify-between w-full h-full basis-1/3 md:basis-2/5">
+        <div className="flex flex-col justify-between w-full h-full md:basis-2/5">
           {pdfUrl && <PDFViewer pdfUrl={pdfUrl} />}
           <Footer />
         </div>
