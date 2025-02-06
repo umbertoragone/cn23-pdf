@@ -67,8 +67,7 @@ export const updatePdf = async (
       res.arrayBuffer()
     );
     const pdfDoc = await PDFDocument.load(originalPdfBytes);
-    const pages = pdfDoc.getPages();
-    const page = pages[0];
+    const page = pdfDoc.getPages()[0];
 
     const helveticaFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
     page.setFont(helveticaFont);
@@ -165,7 +164,10 @@ export const updatePdf = async (
       page.drawText(senderCity.toUpperCase(), {
         x: 244,
         y: pageHeight - 116,
-        size: 10,
+        size:
+          senderCity.length < 15
+            ? 10
+            : Math.max(6, 14 - senderCity.length * 0.33),
       });
     }
 
@@ -221,7 +223,10 @@ export const updatePdf = async (
       page.drawText(recipientCity.toUpperCase(), {
         x: 244,
         y: pageHeight - 191,
-        size: 10,
+        size:
+          recipientCity.length < 15
+            ? 10
+            : Math.max(6, 14 - recipientCity.length * 0.33),
       });
     }
 
