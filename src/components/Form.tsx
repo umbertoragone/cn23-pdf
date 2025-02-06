@@ -109,7 +109,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
 
   return (
     <form className="p-6">
-      <h1 className="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
+      <h1 className="text-center text-4xl font-bold mb-4">
         CN23 PDF Generator
       </h1>
       <div className="grid grid-cols-2 gap-4 mb-4">
@@ -126,7 +126,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.senderName}
               onChange={handleChange}
               autoComplete="name"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -139,7 +139,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderBusiness"
               value={formData.senderBusiness}
               onChange={handleChange}
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -152,7 +152,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderStreet"
               value={formData.senderStreet}
               onChange={handleChange}
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -165,7 +165,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderPostcode"
               value={formData.senderPostcode}
               onChange={handleChange}
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -178,7 +178,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderCity"
               value={formData.senderCity}
               onChange={handleChange}
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -191,7 +191,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderCountry"
               value={formData.senderCountry}
               onChange={handleChange}
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div>
@@ -204,7 +204,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               id="senderCustomsReference"
               value={formData.senderCustomsReference}
               onChange={handleChange}
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
         </div>
@@ -221,7 +221,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientName}
               onChange={handleChange}
               autoComplete="off"
-              className="px-2 border border-neutral-200 dark:border-neutral-800 rounded-md w-full dark:text-neutral-100"
+              className="px-2 rounded-md w-full dark:text-neutral-100"
             />
           </div>
           <div className="mb-2">
@@ -235,7 +235,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientBusiness}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -249,7 +249,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientStreet}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -263,7 +263,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientPostcode}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -277,7 +277,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientCity}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div className="mb-2">
@@ -291,7 +291,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientCountry}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
           <div>
@@ -305,7 +305,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.recipientEmail}
               onChange={handleChange}
               autoComplete="off"
-              className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+              className="w-full"
             />
           </div>
         </div>
@@ -322,7 +322,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription1"
             value={formData.contentDescription1}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-24">
@@ -333,9 +333,10 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             type="number"
             name="quantity1"
             id="quantity1"
+            min="1"
             value={formData.quantity1}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -349,7 +350,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight1}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -363,7 +364,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value1}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-40">
@@ -376,7 +377,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber1"
             value={formData.HSTariffNumber1}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-44">
@@ -390,7 +391,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods1}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
       </div>
@@ -405,7 +406,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription2"
             value={formData.contentDescription2}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-24">
@@ -416,9 +417,10 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             type="number"
             name="quantity2"
             id="quantity2"
+            min="1"
             value={formData.quantity2}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -432,7 +434,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight2}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -446,7 +448,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value2}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-40">
@@ -459,7 +461,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber2"
             value={formData.HSTariffNumber2}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-44">
@@ -473,7 +475,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods2}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
       </div>
@@ -488,7 +490,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription3"
             value={formData.contentDescription3}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-24">
@@ -499,9 +501,10 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             type="number"
             name="quantity3"
             id="quantity3"
+            min="1"
             value={formData.quantity3}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -515,7 +518,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight3}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -529,7 +532,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value3}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-40">
@@ -542,7 +545,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber3"
             value={formData.HSTariffNumber3}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-44">
@@ -556,7 +559,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods3}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
       </div>
@@ -571,7 +574,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="contentDescription4"
             value={formData.contentDescription4}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-24">
@@ -582,9 +585,10 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             type="number"
             name="quantity4"
             id="quantity4"
+            min="1"
             value={formData.quantity4}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -598,7 +602,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.netWeight4}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-36">
@@ -612,7 +616,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.value4}
             onChange={handleChange}
             placeholder="0.00 EUR"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-40">
@@ -625,7 +629,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             id="HSTariffNumber4"
             value={formData.HSTariffNumber4}
             onChange={handleChange}
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="w-44">
@@ -639,7 +643,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.CountryOfOriginOfGoods4}
             onChange={handleChange}
             autoComplete="off"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
       </div>
@@ -656,7 +660,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             value={formData.totalWeight}
             onChange={handleChange}
             placeholder="0.000 kg"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div>
@@ -671,7 +675,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             onChange={handleChange}
             placeholder="0.00 EUR"
             disabled
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div>
@@ -686,7 +690,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             onChange={handleChange}
             autoComplete="off"
             placeholder="0.00 EUR"
-            className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+            className="w-full"
           />
         </div>
         <div className="">
@@ -696,7 +700,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               <Button
                 variant={"outline"}
                 id="date"
-                className={`justify-start text-left border border-neutral-200 dark:border-neutral-800 rounded-md w-full ${
+                className={`justify-start text-left rounded-md w-full ${
                   !formData.date && " text-muted-foreground"
                 }`}
               >
@@ -740,7 +744,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             }
           >
             <SelectTrigger
-              className={`border border-neutral-200 dark:border-neutral-800 rounded-md w-full ${
+              className={`rounded-md w-full ${
                 !formData.categoryOfItem && "text-muted-foreground"
               }`}
             >
@@ -772,7 +776,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="explaination"
                 value={formData.explaination}
                 onChange={handleChange}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+                className="w-full"
               />
             </>
           )}
@@ -788,7 +792,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           id="comments"
           value={formData.comments}
           onChange={handleChange}
-          className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+          className="w-full"
         />
       </div>
       <div className="grid grid-cols-3 gap-4 mb-2">
@@ -860,7 +864,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="licenceNumber"
                 value={formData.licenceNumber}
                 onChange={handleChange}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+                className="w-full"
               />
             </>
           )}
@@ -877,7 +881,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="certificateNumber"
                 value={formData.certificateNumber}
                 onChange={handleChange}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+                className="w-full"
               />
             </>
           )}
@@ -894,7 +898,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 id="invoiceNumber"
                 value={formData.invoiceNumber}
                 onChange={handleChange}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-md w-full"
+                className="w-full"
               />
             </>
           )}
