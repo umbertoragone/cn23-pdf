@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import * as React from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import PDFViewer from "@/components/PDFViewer";
 import Form from "@/components/Form";
 import { updatePdf } from "@/utils/pdfUtils";
 import Footer from "@/components/Footer";
 
 function HomeContent() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const initialFormData = {
     senderName: searchParams.get("senderName") || "",
