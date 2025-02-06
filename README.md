@@ -4,7 +4,7 @@
 
 ## Overview
 
-The [CN23 PDF Generator](https://cn23.ragone.dev) project is designed to help you fill out and generate Poste Italiane's CN23 customs declaration forms in PDF format. This project aims to simplify the process of creating legible and compliant customs documentation for international shipping. The resulting PDF can be downloaded and printed on 4x6" labels, while remaining legible and perfect for small packets.
+The [CN23 PDF Generator](https://cn23.it) project is designed to help you fill out and generate Poste Italiane's CN23 customs declaration forms in PDF format. This project aims to simplify the process of creating legible and compliant customs documentation for international shipping. The resulting PDF can be downloaded and printed on 4x6" labels, while remaining legible and perfect for small packets.
 
 ## Features
 
@@ -15,7 +15,7 @@ The [CN23 PDF Generator](https://cn23.ragone.dev) project is designed to help yo
 
 ## Usage
 
-To generate a CN23 PDF, visit the [CN23 PDF Generator](https://cn23.ragone.dev) website and use the application directly in your browser. The app is secure as it works locally in the browser, without sharing any data with any cloud or external server.
+To generate a CN23 PDF, visit the [CN23 PDF Generator](https://cn23.it) website and use the application directly in your browser. The app is secure as it works locally in the browser, without sharing any data with any cloud or external server.
 
 ## Contribution
 
