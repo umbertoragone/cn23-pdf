@@ -69,8 +69,11 @@ export const updatePdf = async (
     const pdfDoc = await PDFDocument.load(originalPdfBytes);
     const page = pdfDoc.getPages()[0];
 
-    const helveticaFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-    page.setFont(helveticaFont);
+    const courierFont = await pdfDoc.embedFont(StandardFonts.Courier);
+    const helveticaBoldFont = await pdfDoc.embedFont(
+      StandardFonts.HelveticaBold
+    );
+    page.setFont(helveticaBoldFont);
 
     const {
       senderName,
@@ -577,6 +580,13 @@ export const updatePdf = async (
         size: 14,
       });
     }
+
+    page.drawText("https://cn23.it", {
+      x: 72,
+      y: pageHeight - 442.8,
+      font: courierFont,
+      size: 7,
+    });
 
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: "application/pdf" });
