@@ -39,25 +39,25 @@ interface FormData {
   netWeight1: string;
   value1: string;
   HSTariffNumber1: string;
-  CountryOfOriginOfGoods1: string;
+  countryOfOriginOfGoods1: string;
   contentDescription2: string;
   quantity2: string;
   netWeight2: string;
   value2: string;
   HSTariffNumber2: string;
-  CountryOfOriginOfGoods2: string;
+  countryOfOriginOfGoods2: string;
   contentDescription3: string;
   quantity3: string;
   netWeight3: string;
   value3: string;
   HSTariffNumber3: string;
-  CountryOfOriginOfGoods3: string;
+  countryOfOriginOfGoods3: string;
   contentDescription4: string;
   quantity4: string;
   netWeight4: string;
   value4: string;
   HSTariffNumber4: string;
-  CountryOfOriginOfGoods4: string;
+  countryOfOriginOfGoods4: string;
   totalWeight: string;
   totalValue: string;
   postalCharges: string;
@@ -381,14 +381,14 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="w-44">
-          <Label htmlFor="CountryOfOriginOfGoods1" className="font-semibold">
+          <Label htmlFor="countryOfOriginOfGoods1" className="font-semibold">
             Country
           </Label>
           <Input
             type="text"
-            name="CountryOfOriginOfGoods1"
-            id="CountryOfOriginOfGoods1"
-            value={formData.CountryOfOriginOfGoods1}
+            name="countryOfOriginOfGoods1"
+            id="countryOfOriginOfGoods1"
+            value={formData.countryOfOriginOfGoods1}
             onChange={handleChange}
             autoComplete="off"
             className="w-full"
@@ -465,14 +465,14 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="w-44">
-          <Label htmlFor="CountryOfOriginOfGoods2" className="font-semibold">
+          <Label htmlFor="countryOfOriginOfGoods2" className="font-semibold">
             Country
           </Label>
           <Input
             type="text"
-            name="CountryOfOriginOfGoods2"
-            id="CountryOfOriginOfGoods2"
-            value={formData.CountryOfOriginOfGoods2}
+            name="countryOfOriginOfGoods2"
+            id="countryOfOriginOfGoods2"
+            value={formData.countryOfOriginOfGoods2}
             onChange={handleChange}
             autoComplete="off"
             className="w-full"
@@ -549,14 +549,14 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="w-44">
-          <Label htmlFor="CountryOfOriginOfGoods3" className="font-semibold">
+          <Label htmlFor="countryOfOriginOfGoods3" className="font-semibold">
             Country
           </Label>
           <Input
             type="text"
-            name="CountryOfOriginOfGoods3"
-            id="CountryOfOriginOfGoods3"
-            value={formData.CountryOfOriginOfGoods3}
+            name="countryOfOriginOfGoods3"
+            id="countryOfOriginOfGoods3"
+            value={formData.countryOfOriginOfGoods3}
             onChange={handleChange}
             autoComplete="off"
             className="w-full"
@@ -633,14 +633,14 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="w-44">
-          <Label htmlFor="CountryOfOriginOfGoods4" className="font-semibold">
+          <Label htmlFor="countryOfOriginOfGoods4" className="font-semibold">
             Country
           </Label>
           <Input
             type="text"
-            name="CountryOfOriginOfGoods4"
-            id="CountryOfOriginOfGoods4"
-            value={formData.CountryOfOriginOfGoods4}
+            name="countryOfOriginOfGoods4"
+            id="countryOfOriginOfGoods4"
+            value={formData.countryOfOriginOfGoods4}
             onChange={handleChange}
             autoComplete="off"
             className="w-full"

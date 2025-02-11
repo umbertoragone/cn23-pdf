@@ -22,25 +22,25 @@ export const updatePdf = async (
     netWeight1?: string;
     value1?: string;
     HSTariffNumber1?: string;
-    CountryOfOriginOfGoods1?: string;
+    countryOfOriginOfGoods1?: string;
     contentDescription2?: string;
     quantity2?: string;
     netWeight2?: string;
     value2?: string;
     HSTariffNumber2?: string;
-    CountryOfOriginOfGoods2?: string;
+    countryOfOriginOfGoods2?: string;
     contentDescription3?: string;
     quantity3?: string;
     netWeight3?: string;
     value3?: string;
     HSTariffNumber3?: string;
-    CountryOfOriginOfGoods3?: string;
+    countryOfOriginOfGoods3?: string;
     contentDescription4?: string;
     quantity4?: string;
     netWeight4?: string;
     value4?: string;
     HSTariffNumber4?: string;
-    CountryOfOriginOfGoods4?: string;
+    countryOfOriginOfGoods4?: string;
     totalWeight?: string;
     totalValue?: string;
     postalCharges?: string;
@@ -95,25 +95,25 @@ export const updatePdf = async (
       netWeight1,
       value1,
       HSTariffNumber1,
-      CountryOfOriginOfGoods1,
+      countryOfOriginOfGoods1,
       contentDescription2,
       quantity2,
       netWeight2,
       value2,
       HSTariffNumber2,
-      CountryOfOriginOfGoods2,
+      countryOfOriginOfGoods2,
       contentDescription3,
       quantity3,
       netWeight3,
       value3,
       HSTariffNumber3,
-      CountryOfOriginOfGoods3,
+      countryOfOriginOfGoods3,
       contentDescription4,
       quantity4,
       netWeight4,
       value4,
       HSTariffNumber4,
-      CountryOfOriginOfGoods4,
+      countryOfOriginOfGoods4,
       totalWeight,
       totalValue,
       postalCharges,
@@ -298,11 +298,18 @@ export const updatePdf = async (
       });
     }
 
-    if (CountryOfOriginOfGoods1) {
-      page.drawText(CountryOfOriginOfGoods1.toUpperCase(), {
+    if (countryOfOriginOfGoods1) {
+      page.drawText(countryOfOriginOfGoods1.toUpperCase(), {
         x: 499,
         y: pageHeight - 243,
-        size: 10,
+        size: Math.min(
+          10,
+          (11.3 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(
+              countryOfOriginOfGoods1.toUpperCase(),
+              10
+            )
+        ),
       });
     }
 
@@ -346,11 +353,18 @@ export const updatePdf = async (
       });
     }
 
-    if (CountryOfOriginOfGoods2) {
-      page.drawText(CountryOfOriginOfGoods2.toUpperCase(), {
+    if (countryOfOriginOfGoods2) {
+      page.drawText(countryOfOriginOfGoods2.toUpperCase(), {
         x: 499,
         y: pageHeight - 258,
-        size: 10,
+        size: Math.min(
+          10,
+          (11.3 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(
+              countryOfOriginOfGoods2.toUpperCase(),
+              10
+            )
+        ),
       });
     }
 
@@ -394,11 +408,18 @@ export const updatePdf = async (
       });
     }
 
-    if (CountryOfOriginOfGoods3) {
-      page.drawText(CountryOfOriginOfGoods3.toUpperCase(), {
+    if (countryOfOriginOfGoods3) {
+      page.drawText(countryOfOriginOfGoods3.toUpperCase(), {
         x: 499,
         y: pageHeight - 272.5,
-        size: 10,
+        size: Math.min(
+          10,
+          (11.3 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(
+              countryOfOriginOfGoods3.toUpperCase(),
+              10
+            )
+        ),
       });
     }
 
@@ -442,11 +463,18 @@ export const updatePdf = async (
       });
     }
 
-    if (CountryOfOriginOfGoods4) {
-      page.drawText(CountryOfOriginOfGoods4.toUpperCase(), {
+    if (countryOfOriginOfGoods4) {
+      page.drawText(countryOfOriginOfGoods4.toUpperCase(), {
         x: 499,
         y: pageHeight - 287,
-        size: 10,
+        size: Math.min(
+          10,
+          (11.3 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(
+              countryOfOriginOfGoods4.toUpperCase(),
+              10
+            )
+        ),
       });
     }
 
