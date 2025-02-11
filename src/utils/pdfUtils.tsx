@@ -167,10 +167,11 @@ export const updatePdf = async (
       page.drawText(senderCity.toUpperCase(), {
         x: 244,
         y: pageHeight - 116,
-        size:
-          senderCity.length < 15
-            ? 10
-            : Math.max(6, 14 - senderCity.length * 0.33),
+        size: Math.min(
+          10,
+          (9.4 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(senderCity.toUpperCase(), 10)
+        ),
       });
     }
 
@@ -186,7 +187,14 @@ export const updatePdf = async (
       page.drawText(senderCustomsReference.toUpperCase(), {
         x: 278,
         y: pageHeight - 87,
-        size: 10,
+        size: Math.min(
+          10,
+          (6.1 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(
+              senderCustomsReference.toUpperCase(),
+              10
+            )
+        ),
       });
     }
 
@@ -226,10 +234,11 @@ export const updatePdf = async (
       page.drawText(recipientCity.toUpperCase(), {
         x: 244,
         y: pageHeight - 191,
-        size:
-          recipientCity.length < 15
-            ? 10
-            : Math.max(6, 14 - recipientCity.length * 0.33),
+        size: Math.min(
+          10,
+          (9.4 * 100) /
+            helveticaBoldFont.widthOfTextAtSize(recipientCity.toUpperCase(), 10)
+        ),
       });
     }
 
