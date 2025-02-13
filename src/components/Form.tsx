@@ -648,7 +648,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
       </div>
       <hr className="border-neutral-200 dark:border-neutral-800 mb-4" />
-      <div className="grid grid-cols-4 items-end gap-4 mb-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 items-end gap-4 mb-2">
         <div>
           <Label htmlFor="totalWeight" className="font-semibold">
             Total gross weight
