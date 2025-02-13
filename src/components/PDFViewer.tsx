@@ -4,9 +4,12 @@ import { cn } from "@/lib/utils";
 
 interface PDFViewerProps {
   pdfUrl: string;
+  invoiceNumber: string;
 }
 
-export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
+export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
+  const fileName = `cn23${invoiceNumber && `-${invoiceNumber}`}.pdf`;
+
   return (
     <div className="rounded-lg md:sticky md:top-1/2 md:transform md:-translate-y-1/2 lg:p-4">
       <iframe
@@ -22,7 +25,7 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
             if (pdfUrl) {
               const link = document.createElement("a");
               link.href = pdfUrl;
-              link.download = "cn23.pdf";
+              link.download = fileName;
               link.click();
             }
           }}

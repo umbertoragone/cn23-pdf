@@ -90,7 +90,9 @@ function HomeContent() {
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
         <div className="flex flex-col justify-between w-full h-full md:basis-2/5">
-          {pdfUrl && <PDFViewer pdfUrl={pdfUrl} />}
+          {pdfUrl && (
+            <PDFViewer pdfUrl={pdfUrl} invoiceNumber={formData.invoiceNumber} />
+          )}
           <Footer />
         </div>
       </div>
