@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -79,6 +79,10 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
+  const explainationRef = useRef<HTMLInputElement>(null);
+  const licenceNumberRef = useRef<HTMLInputElement>(null);
+  const certificateNumberRef = useRef<HTMLInputElement>(null);
+  const invoiceNumberRef = useRef<HTMLInputElement>(null);
   const parseValue = (value: string) =>
     parseFloat(value.replace(/[^\d.-]/g, "")) || 0;
 
@@ -734,14 +738,19 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           <Select
             name="categoryOfItem"
             value={formData.categoryOfItem}
-            onValueChange={(value) =>
+            onValueChange={(value) => {
               handleChange({
                 target: {
                   name: "categoryOfItem",
                   value: value,
                 },
-              } as React.ChangeEvent<HTMLInputElement>)
-            }
+              } as React.ChangeEvent<HTMLInputElement>);
+              if (value === "other") {
+                setTimeout(() => {
+                  explainationRef.current?.focus();
+                }, 15);
+              }
+            }}
           >
             <SelectTrigger
               className={`rounded-md w-full ${
@@ -774,6 +783,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 type="text"
                 name="explaination"
                 id="explaination"
+                ref={explainationRef}
                 value={formData.explaination}
                 onChange={handleChange}
                 className="w-full"
@@ -801,7 +811,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             name="licence"
             id="licence"
             checked={formData.licence}
-            onCheckedChange={(checked) =>
+            onCheckedChange={(checked) => {
               handleChange({
                 target: {
                   name: "licence",
@@ -809,8 +819,11 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                   type: "checkbox",
                   checked: checked,
                 },
-              } as React.ChangeEvent<HTMLInputElement>)
-            }
+              } as React.ChangeEvent<HTMLInputElement>);
+              setTimeout(() => {
+                licenceNumberRef.current?.focus();
+              }, 0);
+            }}
           />
           <Label htmlFor="licence">Licence</Label>
         </div>
@@ -819,7 +832,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             name="certificate"
             id="certificate"
             checked={formData.certificate}
-            onCheckedChange={(checked) =>
+            onCheckedChange={(checked) => {
               handleChange({
                 target: {
                   name: "certificate",
@@ -827,8 +840,11 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                   type: "checkbox",
                   checked: checked,
                 },
-              } as React.ChangeEvent<HTMLInputElement>)
-            }
+              } as React.ChangeEvent<HTMLInputElement>);
+              setTimeout(() => {
+                certificateNumberRef.current?.focus();
+              }, 0);
+            }}
           />
           <Label htmlFor="certificate">Certificate</Label>
         </div>
@@ -837,7 +853,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             name="invoice"
             id="invoice"
             checked={formData.invoice}
-            onCheckedChange={(checked) =>
+            onCheckedChange={(checked) => {
               handleChange({
                 target: {
                   name: "invoice",
@@ -845,8 +861,11 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                   type: "checkbox",
                   checked: checked,
                 },
-              } as React.ChangeEvent<HTMLInputElement>)
-            }
+              } as React.ChangeEvent<HTMLInputElement>);
+              setTimeout(() => {
+                invoiceNumberRef.current?.focus();
+              }, 0);
+            }}
           />
           <Label htmlFor="invoice">Invoice</Label>
         </div>
@@ -862,6 +881,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 type="text"
                 name="licenceNumber"
                 id="licenceNumber"
+                ref={licenceNumberRef}
                 value={formData.licenceNumber}
                 onChange={handleChange}
                 className="w-full"
@@ -879,6 +899,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 type="text"
                 name="certificateNumber"
                 id="certificateNumber"
+                ref={certificateNumberRef}
                 value={formData.certificateNumber}
                 onChange={handleChange}
                 className="w-full"
@@ -896,6 +917,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 type="text"
                 name="invoiceNumber"
                 id="invoiceNumber"
+                ref={invoiceNumberRef}
                 value={formData.invoiceNumber}
                 onChange={handleChange}
                 className="w-full"
