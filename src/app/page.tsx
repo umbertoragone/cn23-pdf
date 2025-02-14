@@ -89,7 +89,7 @@ function HomeContent() {
         <div className="border dark:border-neutral-800 basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg text-neutral-950 dark:text-neutral-50 bg-white dark:bg-neutral-950">
           <Form formData={{ ...formData }} setFormData={setFormData} />
         </div>
-        <div className="flex flex-col justify-between w-full h-full md:basis-2/5">
+        <div className="flex flex-col justify-end w-full h-full md:basis-2/5">
           {pdfUrl && (
             <PDFViewer pdfUrl={pdfUrl} invoiceNumber={formData.invoiceNumber} />
           )}

@@ -11,7 +11,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
   const fileName = `cn23${invoiceNumber && `-${invoiceNumber}`}.pdf`;
 
   return (
-    <div className="rounded-lg md:sticky md:top-1/2 md:transform md:-translate-y-1/2 lg:p-4">
+    <div className="rounded-lg my-auto lg:p-4">
       <iframe
         src={pdfUrl}
         className="w-full h-[40vh] md:h-[25.6rem] border border-gray-300 dark:border-gray-700 rounded-lg m-auto"
