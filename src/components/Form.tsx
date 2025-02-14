@@ -99,8 +99,6 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       parseValue(updatedFormData.value4),
     ];
 
-    console.log(values);
-
     const totalValue = values.some((value) => value !== 0)
       ? values.reduce((acc, value) => acc + value, 0).toFixed(2) +
         updatedFormData.value1.replace(/[0-9.]/g, "")
