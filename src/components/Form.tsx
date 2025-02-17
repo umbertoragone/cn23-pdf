@@ -128,7 +128,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               value={formData.senderName}
               onChange={handleChange}
               autoComplete="name"
-              className="w-full"
+              className="w-full border-input"
             />
           </div>
           <div className="mb-2">
