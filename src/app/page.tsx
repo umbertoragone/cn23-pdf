@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 import PDFViewer from "@/components/PDFViewer";
@@ -65,12 +65,14 @@ function HomeContent() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [pdfUrl, setPdfUrl] = useState<string | null>("/assets/docs/cn23.pdf");
+  const prevFormDataRef = useRef(formData);
 
   useEffect(() => {
-    if (pdfUrl) {
+    if (pdfUrl && prevFormDataRef.current !== formData) {
       updatePdf(pdfUrl, { ...formData }, setPdfUrl);
+      prevFormDataRef.current = formData;
     }
-  }, [formData]);
+  }, [formData, pdfUrl]);
 
   useEffect(() => {
     const query = new URLSearchParams(
@@ -79,7 +81,6 @@ function HomeContent() {
         return acc;
       }, {} as Record<string, string>)
     ).toString();
-    // router.replace(`?${query}`, undefined);
     history.replaceState(null, "", `?${query}`);
   }, [formData]);
 
