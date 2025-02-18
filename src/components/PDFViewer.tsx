@@ -38,20 +38,30 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
         ratio={1.375}
         className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden"
       >
-        <Document file={pdfUrl} loading={null}>
-          <Page
-            pageNumber={1}
-            width={pageWidth}
-            renderTextLayer={false}
-            renderAnnotationLayer={false}
+        {pdfUrl && (
+          <Document
+            file={pdfUrl}
             loading={null}
             onLoadError={() => {
               setTimeout(() => {
                 window.location.reload();
               }, 1000);
             }}
-          />
-        </Document>
+          >
+            <Page
+              pageNumber={1}
+              width={pageWidth}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+              loading={null}
+              onLoadError={() => {
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
+              }}
+            />
+          </Document>
+        )}
       </AspectRatio>
       <div className="flex justify-center items-center gap-2 mt-4">
         <Button
