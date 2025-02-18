@@ -2,8 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Document, Page, pdfjs } from "react-pdf";
+import { Loader2 } from "lucide-react";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -20,6 +22,15 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
 
   const [pageWidth, setPageWidth] = useState<number>(600);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [debouncedPdfUrl, setDebouncedPdfUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedPdfUrl(pdfUrl);
+    }, 300);
+
+    return () => clearTimeout(handler);
+  }, [pdfUrl]);
 
   useEffect(() => {
     function updatePageWidth() {
@@ -38,14 +49,18 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
         ratio={1.375}
         className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden"
       >
-        {pdfUrl && (
+        {debouncedPdfUrl && (
           <Document
-            file={pdfUrl}
-            loading={null}
-            onLoadError={() => {
-              setTimeout(() => {
-                window.location.reload();
-              }, 1000);
+            file={debouncedPdfUrl}
+            loading={
+              <div className="flex justify-center">
+                <Loader2 className="text-neutral-500 size-6 animate-spin my-44" />
+              </div>
+            }
+            onLoadError={(error) => {
+              toast.error("PDF Load Error", {
+                description: error.message,
+              });
             }}
           >
             <Page
@@ -54,10 +69,10 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
               renderTextLayer={false}
               renderAnnotationLayer={false}
               loading={null}
-              onLoadError={() => {
-                setTimeout(() => {
-                  window.location.reload();
-                }, 1000);
+              onLoadError={(error) => {
+                toast.error("PDF Page Load Error", {
+                  description: error.message,
+                });
               }}
             />
           </Document>
@@ -69,9 +84,9 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
             "rounded-lg bg-green-700 hover:bg-green-800 font-semibold text-sm text-white shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
           )}
           onClick={() => {
-            if (pdfUrl) {
+            if (debouncedPdfUrl) {
               const link = document.createElement("a");
-              link.href = pdfUrl;
+              link.href = debouncedPdfUrl;
               link.download = fileName;
               link.click();
             }
