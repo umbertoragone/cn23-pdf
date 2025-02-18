@@ -21,8 +21,8 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
   const fileName = `cn23${invoiceNumber && `-${invoiceNumber}`}.pdf`;
 
   const [pageWidth, setPageWidth] = useState<number>(600);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [debouncedPdfUrl, setDebouncedPdfUrl] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -53,8 +53,11 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
           <Document
             file={debouncedPdfUrl}
             loading={
-              <div className="flex justify-center">
-                <Loader2 className="text-neutral-500 size-8 animate-spin my-44" />
+              <div
+                className="flex justify-center items-center"
+                style={{ height: Math.round(pageWidth / 1.375) }}
+              >
+                <Loader2 className="size-8 text-neutral-500 animate-spin" />
               </div>
             }
             onLoadError={(error) => {
