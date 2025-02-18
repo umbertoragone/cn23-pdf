@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, Suspense, useRef } from "react";
+import { useState, useEffect, Suspense } from "react";
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 import PDFViewer from "@/components/PDFViewer";
@@ -65,14 +65,13 @@ function HomeContent() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [pdfUrl, setPdfUrl] = useState<string | null>("/assets/docs/cn23.pdf");
-  const prevFormDataRef = useRef(formData);
 
   useEffect(() => {
-    if (pdfUrl && prevFormDataRef.current !== formData) {
+    if (pdfUrl) {
       updatePdf(pdfUrl, { ...formData }, setPdfUrl);
-      prevFormDataRef.current = formData;
     }
-  }, [formData, pdfUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData]);
 
   useEffect(() => {
     const query = new URLSearchParams(
