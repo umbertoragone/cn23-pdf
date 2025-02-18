@@ -751,14 +751,14 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
             }}
           >
             <SelectTrigger
-              className={`rounded-md w-full ${
+              className={`rounded-md w-full font-medium ${
                 !formData.categoryOfItem && "text-muted-foreground"
               }`}
             >
               <SelectValue placeholder="Select a category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectGroup>
+              <SelectGroup className="font-medium">
                 <SelectItem value="gift">Gift</SelectItem>
                 <SelectItem value="documents">Documents</SelectItem>
                 <SelectItem value="commercial-sample">
