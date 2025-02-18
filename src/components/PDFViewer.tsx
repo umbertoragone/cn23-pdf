@@ -54,7 +54,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
             file={debouncedPdfUrl}
             loading={
               <div className="flex justify-center">
-                <Loader2 className="text-neutral-500 size-6 animate-spin my-44" />
+                <Loader2 className="text-neutral-500 size-8 animate-spin my-44" />
               </div>
             }
             onLoadError={(error) => {
