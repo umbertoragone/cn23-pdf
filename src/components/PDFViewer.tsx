@@ -1,10 +1,14 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Document, Page, pdfjs } from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
 
 interface PDFViewerProps {
   pdfUrl: string;
@@ -40,6 +44,12 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
             width={pageWidth}
             renderTextLayer={false}
             renderAnnotationLayer={false}
+            loading={null}
+            onLoadError={() => {
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
+            }}
           />
         </Document>
       </AspectRatio>

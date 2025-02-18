@@ -1,6 +1,6 @@
 {
   "name": "cn23-pdf",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -26,7 +26,7 @@
     "lucide-react": "^0.475.0",
     "next": "15.1.7",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^4.10.38",
+    "pdfjs-dist": "^4.8.69",
     "react": "^19.0.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^19.0.0",
