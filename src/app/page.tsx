@@ -80,7 +80,10 @@ function HomeContent() {
         return acc;
       }, {} as Record<string, string>)
     ).toString();
-    history.replaceState(null, "", `?${query}`);
+    const delayDebounceFn = setTimeout(() => {
+      history.replaceState(null, "", `?${query}`);
+    }, 300);
+    return () => clearTimeout(delayDebounceFn);
   }, [formData]);
 
   return (
