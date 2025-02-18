@@ -31,8 +31,8 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
   return (
     <div ref={containerRef} className="w-full my-auto">
       <AspectRatio
-        ratio={1.38}
-        className="border border-neutral-300 dark:border-neutral-700 rounded-lg overflow-hidden"
+        ratio={1.375}
+        className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden"
       >
         <Document file={pdfUrl} loading={null}>
           <Page
