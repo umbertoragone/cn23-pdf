@@ -60,7 +60,14 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
               width={width ? width : 600}
               renderTextLayer={false}
               renderAnnotationLayer={false}
-              loading={null}
+              loading={
+                <div
+                  className="flex justify-center items-center"
+                  style={{ height: Math.round((width ?? 600) / 1.375) }}
+                >
+                  <Loader2 className="size-8 text-neutral-500 animate-spin" />
+                </div>
+              }
               onLoadError={(error) => {
                 toast.error("PDF Page Load Error", {
                   description: error.message,
