@@ -1,6 +1,6 @@
 {
   "name": "cn23-pdf",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -18,7 +18,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-switch": "^1.1.3",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.0.6",
+    "@tailwindcss/postcss": "^4.0.7",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -34,7 +34,7 @@
     "react-hook-form": "^7.54.2",
     "react-pdf": "^9.2.1",
     "react-resize-detector": "^12.0.2",
-    "sonner": "^1.7.4",
+    "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.2"
@@ -46,8 +46,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
-    "postcss": "^8.5.2",
-    "tailwindcss": "^4.0.6",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.7",
     "typescript": "^5"
   }
 }
