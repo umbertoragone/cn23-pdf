@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useResizeDetector } from "react-resize-detector";
-import { Loader2 } from "lucide-react";
+import Loading from "@/components/Loading";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -40,16 +40,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
         ratio={1.375}
         className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden text-black"
       >
-        <Suspense
-          fallback={
-            <div
-              className="flex justify-center items-center"
-              style={{ height: Math.round((width ?? 600) / 1.375) }}
-            >
-              <Loader2 className="size-8 text-neutral-500 animate-spin" />
-            </div>
-          }
-        >
+        <Suspense fallback={<Loading width={width}></Loading>}>
           <Document
             file={debouncedPdfUrl}
             loading={null}
@@ -65,14 +56,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
               width={width}
               renderTextLayer={false}
               renderAnnotationLayer={false}
-              loading={
-                <div
-                  className="flex justify-center items-center"
-                  style={{ height: Math.round((width ?? 600) / 1.375) }}
-                >
-                  <Loader2 className="size-8 text-neutral-500 animate-spin" />
-                </div>
-              }
+              loading={<Loading width={width}></Loading>}
               onLoadError={(error) => {
                 toast.error("PDF Page Load Error", {
                   description: error.message,
