@@ -64,7 +64,12 @@ function HomeContent() {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [pdfUrl, setPdfUrl] = useState<string | null>("/assets/docs/cn23.pdf");
+  const [pdfUrl, setPdfUrl] = useState<string>("");
+
+  useEffect(() => {
+    updatePdf("/assets/docs/cn23.pdf", { ...formData }, setPdfUrl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (pdfUrl) {

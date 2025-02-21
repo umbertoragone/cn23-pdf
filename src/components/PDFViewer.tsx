@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, useRef } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -20,13 +20,15 @@ interface PDFViewerProps {
 
 export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
   const fileName = `cn23${invoiceNumber && `-${invoiceNumber}`}.pdf`;
-  const [debouncedPdfUrl, setDebouncedPdfUrl] = useState<string | null>(null);
+  const [debouncedPdfUrl, setDebouncedPdfUrl] = useState<string>(pdfUrl);
+  const prevPdfUrl = useRef(pdfUrl);
 
   useEffect(() => {
+    if (prevPdfUrl.current === pdfUrl) return;
     const handler = setTimeout(() => {
       setDebouncedPdfUrl(pdfUrl);
+      prevPdfUrl.current = pdfUrl;
     }, 300);
-
     return () => clearTimeout(handler);
   }, [pdfUrl]);
 
@@ -36,19 +38,22 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
     <div ref={ref} className="w-full my-auto">
       <AspectRatio
         ratio={1.375}
-        className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden"
+        className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden text-black"
       >
-        {debouncedPdfUrl && (
+        <Suspense
+          fallback={
+            <div
+              className="flex justify-center items-center"
+              style={{ height: Math.round((width ?? 600) / 1.375) }}
+            >
+              <Loader2 className="size-8 text-neutral-500 animate-spin" />
+            </div>
+          }
+        >
           <Document
             file={debouncedPdfUrl}
-            loading={
-              <div
-                className="flex justify-center items-center"
-                style={{ height: Math.round((width ?? 600) / 1.375) }}
-              >
-                <Loader2 className="size-8 text-neutral-500 animate-spin" />
-              </div>
-            }
+            loading={null}
+            noData={null}
             onLoadError={(error) => {
               toast.error("PDF Load Error", {
                 description: error.message,
@@ -57,7 +62,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
           >
             <Page
               pageNumber={1}
-              width={width ? width : 600}
+              width={width}
               renderTextLayer={false}
               renderAnnotationLayer={false}
               loading={
@@ -75,7 +80,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
               }}
             />
           </Document>
-        )}
+        </Suspense>
       </AspectRatio>
       <div className="flex justify-center items-center gap-2 mt-4">
         <Button
