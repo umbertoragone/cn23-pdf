@@ -40,7 +40,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
         ratio={1.375}
         className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden text-black"
       >
-        <Suspense fallback={<Loading width={width}></Loading>}>
+        <Suspense fallback={<Loading width={width} />}>
           <Document
             file={debouncedPdfUrl}
             loading={null}
@@ -56,7 +56,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
               width={width}
               renderTextLayer={false}
               renderAnnotationLayer={false}
-              loading={<Loading width={width}></Loading>}
+              loading={<Loading width={width} />}
               onLoadError={(error) => {
                 toast.error("PDF Page Load Error", {
                   description: error.message,
