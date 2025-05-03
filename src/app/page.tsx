@@ -60,7 +60,10 @@ function HomeContent() {
     invoice: searchParams.get("invoice") === "true" || false,
     invoiceNumber: searchParams.get("invoiceNumber") || "",
     postalCharges: searchParams.get("postalCharges") || "",
-    date: searchParams.get("date") || "",
+    date:
+      searchParams.get("date") === "today"
+        ? new Date().toLocaleDateString("it-IT")
+        : searchParams.get("date") || "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
