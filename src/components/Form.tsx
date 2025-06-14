@@ -88,9 +88,29 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
+
+    let updatedValue = value;
+
+    const fieldsToConvert = [
+      "netWeight1",
+      "value1",
+      "netWeight2",
+      "value2",
+      "netWeight3",
+      "value3",
+      "netWeight4",
+      "value4",
+      "totalWeight",
+      "postalCharges",
+    ];
+
+    if (fieldsToConvert.includes(name)) {
+      updatedValue = value.replace(/,/g, ".");
+    }
+
     const updatedFormData = {
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : updatedValue,
     };
     const values = [
       parseValue(updatedFormData.value1),
