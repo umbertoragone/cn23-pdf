@@ -744,7 +744,6 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                     date: date ? format(date, "dd/MM/yyyy") : "",
                   })
                 }
-                initialFocus
               />
             </PopoverContent>
           </Popover>
