@@ -76,7 +76,9 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
               const link = document.createElement("a");
               link.href = debouncedPdfUrl;
               link.download = fileName;
+              document.body.appendChild(link);
               link.click();
+              document.body.removeChild(link);
             }
           }}
         >

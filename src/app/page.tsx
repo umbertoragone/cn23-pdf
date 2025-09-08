@@ -68,6 +68,7 @@ function HomeContent() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [pdfUrl, setPdfUrl] = useState<string>("");
+  const downloadTriggered = React.useRef(false);
 
   useEffect(() => {
     updatePdf("/assets/docs/cn23.pdf", { ...formData }, setPdfUrl);
@@ -93,6 +94,25 @@ function HomeContent() {
     }, 300);
     return () => clearTimeout(delayDebounceFn);
   }, [formData]);
+
+  useEffect(() => {
+    const downloadParam = searchParams.get("download");
+    const shouldDownload = downloadParam === "True" || downloadParam === "true";
+    const fileName = `cn23${formData.invoiceNumber && `-${formData.invoiceNumber}`}.pdf`;
+
+    if (shouldDownload && pdfUrl && !downloadTriggered.current) {
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      downloadTriggered.current = true;
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.delete("download");
+      history.replaceState(null, "", `?${newSearchParams.toString()}`);
+    }
+  }, [pdfUrl, searchParams, formData.invoiceNumber]);
 
   return (
     <div className="flex flex-col justify-center items-center md:h-screen bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
