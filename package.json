@@ -1,6 +1,6 @@
 {
   "name": "cn23-pdf",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": {
     "name": "Umberto Ragone",
     "email": "umberto@ragone.dev"
@@ -28,7 +28,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.515.0",
-    "next": "^15.3.3",
+    "next": "^15.4.7",
     "next-themes": "^0.4.4",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "4.8.69",
