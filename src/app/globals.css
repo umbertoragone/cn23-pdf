@@ -1,6 +1,8 @@
 @import "tailwindcss";
-
 @plugin "tailwindcss-animate";
+
+@import "react-pdf/dist/Page/AnnotationLayer.css";
+@import "react-pdf/dist/Page/TextLayer.css";
 
 :root {
   --background: hsl(0 0% 100%);
