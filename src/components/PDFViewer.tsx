@@ -102,7 +102,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
       <div className="flex justify-center items-center gap-2 mt-4">
         <Button
           className={cn(
-            "rounded-lg bg-green-700 hover:bg-green-800 font-semibold text-sm text-white shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75",
+            "rounded-lg bg-green-700 hover:bg-green-800 font-semibold text-sm text-white shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 cursor-pointer",
           )}
           onClick={() => {
             if (debouncedPdfUrl) {
