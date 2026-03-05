@@ -132,7 +132,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
   return (
     <form className="p-6">
       <h1 className="text-center text-4xl font-black mb-4">
-        CN23 PDF Generator
+        Poste Italiane CN23 PDF Generator
       </h1>
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div>

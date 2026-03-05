@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CN23.it – CN23 PDF Generator",
+  title: "CN23.it – Poste Italiane CN23 PDF Generator",
   description:
     "An online tool to generate Poste Italiane's CN23 PDF for international shipping, ready for printing",
 };
