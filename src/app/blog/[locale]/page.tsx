@@ -16,6 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { metadata } from "@/app/layout";
 
 interface BlogLocalePageProps {
   params: Promise<{ locale: string }>;
@@ -33,22 +34,24 @@ const copy: Record<
   }
 > = {
   it: {
-    title: "Guide per le spedizioni con CN23",
+    title: "Guide per le spedizioni internazionali con CN23",
     description:
       "Articoli rapidi su compilazione del modulo, link precompilati e errori comuni da evitare.",
     backLabel: "Torna al generatore",
     readHint: "Apri l'articolo completo per i passaggi e gli esempi.",
-    metadataTitle: "Blog IT | Generatore PDF CN23",
-    metadataDescription: "Guide e aggiornamenti in italiano sul generatore PDF CN23.",
+    metadataTitle: `Blog | ${metadata.title}`,
+    metadataDescription:
+      "Guide e aggiornamenti in italiano sul generatore PDF CN23.",
   },
   en: {
-    title: "Guides for CN23 shipments",
+    title: "Guides for international CN23 shipments",
     description:
       "Short notes on filling the form, sharing pre-filled links, and avoiding common customs mistakes.",
     backLabel: "Back to generator",
     readHint: "Read the full post for the exact steps and examples.",
-    metadataTitle: "Blog EN | CN23 PDF Generator",
-    metadataDescription: "English guides and updates for the CN23 PDF generator.",
+    metadataTitle: "Blog | CN23.it – Poste Italiane CN23 PDF Generator",
+    metadataDescription:
+      "English guides and updates for the CN23 PDF generator.",
   },
 };
 
@@ -63,7 +66,7 @@ export async function generateMetadata({
 
   if (!isBlogLocale(locale)) {
     return {
-      title: "Blog | CN23 PDF Generator",
+      title: `Blog | ${metadata.title}`,
     };
   }
 
@@ -85,7 +88,7 @@ export default async function BlogLocalePage({ params }: BlogLocalePageProps) {
 
   return (
     <ContentPageShell
-      eyebrow={`Blog ${locale.toUpperCase()}`}
+      eyebrow="Blog"
       title={pageCopy.title}
       description={pageCopy.description}
       backLabel={pageCopy.backLabel}
@@ -107,18 +110,11 @@ export default async function BlogLocalePage({ params }: BlogLocalePageProps) {
                 <p className="text-sm text-neutral-500">
                   {formatPublishedDate(post.publishedAt, locale)}
                 </p>
-                <CardTitle className="text-xl group-hover:underline">
-                  {post.title}
-                </CardTitle>
+                <CardTitle className="text-xl">{post.title}</CardTitle>
                 <CardDescription className="text-base leading-7">
                   {post.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-sm text-neutral-600 dark:text-neutral-300">
-                  {pageCopy.readHint}
-                </p>
-              </CardContent>
             </Card>
           </Link>
         ))}

@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CN23.it – Poste Italiane CN23 PDF Generator",
+  title: "CN23.it – Poste Italiane Generatore PDF CN23",
   description:
-    "An online tool to generate Poste Italiane's CN23 PDF for international shipping, ready for printing",
+    "Uno strumento online per generare il PDF del modulo CN23 di Poste Italiane per le spedizioni internazionali, pronto per la stampa",
 };
 
 export default function RootLayout({
@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {children}
         <Toaster richColors />
       </body>
