@@ -1,6 +1,13 @@
 import packageJson from "../../package.json";
+import { type Language, uiCopy } from "@/lib/i18n";
 
-export default function Footer() {
+interface FooterProps {
+  language: Language;
+}
+
+export default function Footer({ language }: FooterProps) {
+  const copy = uiCopy[language];
+
   return (
     <footer className="w-full text-center text-sm text-neutral-500 p-2">
       <p>
@@ -12,7 +19,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="hover:underline"
         >
-          View on GitHub
+          {copy.viewOnGithub}
         </a>
       </p>
     </footer>

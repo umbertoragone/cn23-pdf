@@ -6,9 +6,16 @@ import PDFViewer from "@/components/PDFViewer";
 import Form from "@/components/Form";
 import { updatePdf } from "@/utils/pdfUtils";
 import Footer from "@/components/Footer";
+import {
+  isLanguage,
+  LANGUAGE_STORAGE_KEY,
+  type Language,
+} from "@/lib/i18n";
 
 function HomeContent() {
   const searchParams = useSearchParams();
+  const [language, setLanguage] = useState<Language>("it");
+  const [languageReady, setLanguageReady] = useState(false);
   const initialFormData = {
     senderName: searchParams.get("senderName") || "",
     senderBusiness: searchParams.get("senderBusiness") || "",
@@ -71,6 +78,31 @@ function HomeContent() {
   const downloadTriggered = React.useRef(false);
 
   useEffect(() => {
+    try {
+      const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+      const nextLanguage = isLanguage(storedLanguage) ? storedLanguage : "it";
+      setLanguage(nextLanguage);
+      document.documentElement.lang = nextLanguage;
+    } catch {
+      document.documentElement.lang = "it";
+    } finally {
+      setLanguageReady(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!languageReady) {
+      return;
+    }
+
+    document.documentElement.lang = language;
+
+    try {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    } catch {}
+  }, [language, languageReady]);
+
+  useEffect(() => {
     updatePdf("/assets/docs/cn23.pdf", { ...formData }, setPdfUrl);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -118,13 +150,22 @@ function HomeContent() {
     <div className="flex flex-col justify-center items-center md:h-screen bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
       <div className="flex flex-col md:flex-row items-stretch w-full md:h-screen gap-4 sm:p-8">
         <div className="border border-neutral-200 dark:border-neutral-800 basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg text-neutral-950 dark:text-neutral-50 bg-white dark:bg-neutral-950">
-          <Form formData={{ ...formData }} setFormData={setFormData} />
+          <Form
+            formData={{ ...formData }}
+            setFormData={setFormData}
+            language={language}
+            setLanguage={setLanguage}
+          />
         </div>
         <div className="flex flex-col justify-end w-full h-full md:basis-2/5">
           {pdfUrl && (
-            <PDFViewer pdfUrl={pdfUrl} invoiceNumber={formData.invoiceNumber} />
+            <PDFViewer
+              pdfUrl={pdfUrl}
+              invoiceNumber={formData.invoiceNumber}
+              language={language}
+            />
           )}
-          <Footer />
+          <Footer language={language} />
         </div>
       </div>
     </div>

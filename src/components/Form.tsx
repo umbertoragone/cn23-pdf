@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Settings } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -13,11 +14,20 @@ import {
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { format } from "date-fns";
+import { type Language, uiCopy } from "@/lib/i18n";
 
 interface FormData {
   senderName: string;
@@ -76,13 +86,21 @@ interface FormData {
 interface FormProps {
   formData: FormData;
   setFormData: (formData: FormData) => void;
+  language: Language;
+  setLanguage: (language: Language) => void;
 }
 
-const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
+const Form: React.FC<FormProps> = ({
+  formData,
+  setFormData,
+  language,
+  setLanguage,
+}) => {
   const explainationRef = useRef<HTMLInputElement>(null);
   const licenceNumberRef = useRef<HTMLInputElement>(null);
   const certificateNumberRef = useRef<HTMLInputElement>(null);
   const invoiceNumberRef = useRef<HTMLInputElement>(null);
+  const copy = uiCopy[language];
   const parseValue = (value: string) =>
     parseFloat(value.replace(/[^\d.-]/g, "")) || 0;
 
@@ -131,15 +149,56 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
 
   return (
     <form className="p-6">
-      <h1 className="text-center text-4xl font-black mb-4">
-        Poste Italiane CN23 PDF Generator
-      </h1>
+      <div className="mb-6 flex items-start justify-between gap-4">
+        <h1 className="text-3xl font-black sm:text-4xl">{copy.title}</h1>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              className="cursor-pointer shrink-0"
+              aria-label={copy.settings}
+            >
+              <Settings className="size-4" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{copy.settingsTitle}</DialogTitle>
+              <DialogDescription>{copy.settingsDescription}</DialogDescription>
+            </DialogHeader>
+            <div className="space-y-2">
+              <Label htmlFor="language-selector" className="font-semibold">
+                {copy.language}
+              </Label>
+              <Select
+                value={language}
+                onValueChange={(value) => setLanguage(value as Language)}
+              >
+                <SelectTrigger id="language-selector" className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup className="font-medium">
+                    <SelectItem value="it">{copy.italian}</SelectItem>
+                    <SelectItem value="en">{copy.english}</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <div className="mb-4">
+        <div className="h-px w-full bg-border" />
+      </div>
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div>
-          <p className="font-bold">Sender</p>
+          <p className="font-bold">{copy.sender}</p>
           <div className="mb-2">
             <Label htmlFor="senderName" className="font-semibold">
-              Name
+              {copy.name}
             </Label>
             <Input
               type="text"
@@ -153,7 +212,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="senderBusiness" className="font-semibold">
-              Business
+              {copy.business}
             </Label>
             <Input
               type="text"
@@ -166,7 +225,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="senderStreet" className="font-semibold">
-              Street
+              {copy.street}
             </Label>
             <Input
               type="text"
@@ -179,7 +238,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="senderPostcode" className="font-semibold">
-              Postcode
+              {copy.postcode}
             </Label>
             <Input
               type="text"
@@ -192,7 +251,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="senderCity" className="font-semibold">
-              City
+              {copy.city}
             </Label>
             <Input
               type="text"
@@ -205,7 +264,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="senderCountry" className="font-semibold">
-              Country
+              {copy.country}
             </Label>
             <Input
               type="text"
@@ -218,7 +277,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div>
             <Label htmlFor="senderCustomsReference" className="font-semibold">
-              Customs reference
+              {copy.customsReference}
             </Label>
             <Input
               type="text"
@@ -231,10 +290,10 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
         </div>
         <div>
-          <p className="font-bold">Recipient</p>
+          <p className="font-bold">{copy.recipient}</p>
           <div className="mb-2">
             <Label htmlFor="recipientName" className="font-semibold">
-              Name
+              {copy.name}
             </Label>
             <Input
               type="text"
@@ -248,7 +307,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="recipientBusiness" className="font-semibold">
-              Business
+              {copy.business}
             </Label>
             <Input
               type="text"
@@ -262,7 +321,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="recipientStreet" className="font-semibold">
-              Street
+              {copy.street}
             </Label>
             <Input
               type="text"
@@ -276,7 +335,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="recipientPostcode" className="font-semibold">
-              Postcode
+              {copy.postcode}
             </Label>
             <Input
               type="text"
@@ -290,7 +349,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="recipientCity" className="font-semibold">
-              City
+              {copy.city}
             </Label>
             <Input
               type="text"
@@ -304,7 +363,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div className="mb-2">
             <Label htmlFor="recipientCountry" className="font-semibold">
-              Country
+              {copy.country}
             </Label>
             <Input
               type="text"
@@ -318,7 +377,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           </div>
           <div>
             <Label htmlFor="recipientEmail" className="font-semibold">
-              Email/Phone number
+              {copy.emailPhoneNumber}
             </Label>
             <Input
               type="text"
@@ -336,7 +395,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription1" className="font-semibold">
-            Description
+            {copy.description}
           </Label>
           <Input
             type="text"
@@ -349,7 +408,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-24">
           <Label htmlFor="quantity1" className="font-semibold">
-            Qty
+            {copy.qty}
           </Label>
           <Input
             type="number"
@@ -363,7 +422,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="netWeight1" className="font-semibold">
-            Net weight
+            {copy.netWeight}
           </Label>
           <Input
             type="text"
@@ -377,7 +436,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="value1" className="font-semibold">
-            Value
+            {copy.value}
           </Label>
           <Input
             type="text"
@@ -391,7 +450,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-40">
           <Label htmlFor="HSTariffNumber1" className="font-semibold">
-            HS tariff #
+            {copy.hsTariff}
           </Label>
           <Input
             type="text"
@@ -404,7 +463,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-44">
           <Label htmlFor="countryOfOriginOfGoods1" className="font-semibold">
-            Country
+            {copy.country}
           </Label>
           <Input
             type="text"
@@ -420,7 +479,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription2" className="font-semibold">
-            Description
+            {copy.description}
           </Label>
           <Input
             type="text"
@@ -433,7 +492,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-24">
           <Label htmlFor="quantity2" className="font-semibold">
-            Qty
+            {copy.qty}
           </Label>
           <Input
             type="number"
@@ -447,7 +506,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="netWeight2" className="font-semibold">
-            Net weight
+            {copy.netWeight}
           </Label>
           <Input
             type="text"
@@ -461,7 +520,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="value2" className="font-semibold">
-            Value
+            {copy.value}
           </Label>
           <Input
             type="text"
@@ -475,7 +534,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-40">
           <Label htmlFor="HSTariffNumber2" className="font-semibold">
-            HS tariff #
+            {copy.hsTariff}
           </Label>
           <Input
             type="text"
@@ -488,7 +547,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-44">
           <Label htmlFor="countryOfOriginOfGoods2" className="font-semibold">
-            Country
+            {copy.country}
           </Label>
           <Input
             type="text"
@@ -504,7 +563,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription3" className="font-semibold">
-            Description
+            {copy.description}
           </Label>
           <Input
             type="text"
@@ -517,7 +576,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-24">
           <Label htmlFor="quantity3" className="font-semibold">
-            Qty
+            {copy.qty}
           </Label>
           <Input
             type="number"
@@ -531,7 +590,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="netWeight3" className="font-semibold">
-            Net weight
+            {copy.netWeight}
           </Label>
           <Input
             type="text"
@@ -545,7 +604,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="value3" className="font-semibold">
-            Value
+            {copy.value}
           </Label>
           <Input
             type="text"
@@ -559,7 +618,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-40">
           <Label htmlFor="HSTariffNumber3" className="font-semibold">
-            HS tariff #
+            {copy.hsTariff}
           </Label>
           <Input
             type="text"
@@ -572,7 +631,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-44">
           <Label htmlFor="countryOfOriginOfGoods3" className="font-semibold">
-            Country
+            {copy.country}
           </Label>
           <Input
             type="text"
@@ -588,7 +647,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       <div className="flex flex-wrap lg:flex-nowrap justify-between items-end gap-2 mb-2">
         <div className="w-96">
           <Label htmlFor="contentDescription4" className="font-semibold">
-            Description
+            {copy.description}
           </Label>
           <Input
             type="text"
@@ -601,7 +660,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-24">
           <Label htmlFor="quantity4" className="font-semibold">
-            Qty
+            {copy.qty}
           </Label>
           <Input
             type="number"
@@ -615,7 +674,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="netWeight4" className="font-semibold">
-            Net weight
+            {copy.netWeight}
           </Label>
           <Input
             type="text"
@@ -629,7 +688,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-36">
           <Label htmlFor="value4" className="font-semibold">
-            Value
+            {copy.value}
           </Label>
           <Input
             type="text"
@@ -643,7 +702,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-40">
           <Label htmlFor="HSTariffNumber4" className="font-semibold">
-            HS tariff #
+            {copy.hsTariff}
           </Label>
           <Input
             type="text"
@@ -656,7 +715,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div className="w-44">
           <Label htmlFor="countryOfOriginOfGoods4" className="font-semibold">
-            Country
+            {copy.country}
           </Label>
           <Input
             type="text"
@@ -673,7 +732,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       <div className="grid grid-cols-2 sm:grid-cols-4 items-end gap-4 mb-2">
         <div>
           <Label htmlFor="totalWeight" className="font-semibold">
-            Total gross weight
+            {copy.totalGrossWeight}
           </Label>
           <Input
             type="text"
@@ -687,7 +746,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div>
           <Label htmlFor="totalValue" className="font-semibold">
-            Total value
+            {copy.totalValue}
           </Label>
           <Input
             type="text"
@@ -702,7 +761,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
         </div>
         <div>
           <Label htmlFor="postalCharges" className="font-semibold">
-            Postal charges
+            {copy.postalCharges}
           </Label>
           <Input
             type="text"
@@ -716,17 +775,17 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           />
         </div>
         <div className="">
-          <Label className="font-semibold">Date</Label>
+          <Label className="font-semibold">{copy.date}</Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
-                variant={"outline"}
+                variant="outline"
                 id="date"
                 className={`justify-start text-left rounded-md w-full ${
                   !formData.date && " text-muted-foreground"
                 }`}
               >
-                <span>{formData.date || "Pick a date"}</span>
+                <span>{formData.date || copy.pickDate}</span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
@@ -751,7 +810,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       </div>
       <div className="grid grid-cols-2 gap-4 mb-2">
         <div>
-          <Label className="font-semibold">Category of item</Label>
+          <Label className="font-semibold">{copy.categoryOfItem}</Label>
           <Select
             name="categoryOfItem"
             value={formData.categoryOfItem}
@@ -774,18 +833,22 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
                 !formData.categoryOfItem && "text-muted-foreground"
               }`}
             >
-              <SelectValue placeholder="Select a category" />
+              <SelectValue placeholder={copy.selectCategory} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup className="font-medium">
-                <SelectItem value="gift">Gift</SelectItem>
-                <SelectItem value="documents">Documents</SelectItem>
+                <SelectItem value="gift">{copy.gift}</SelectItem>
+                <SelectItem value="documents">{copy.documents}</SelectItem>
                 <SelectItem value="commercial-sample">
-                  Commercial sample
+                  {copy.commercialSample}
                 </SelectItem>
-                <SelectItem value="returned-goods">Returned goods</SelectItem>
-                <SelectItem value="sale-of-goods">Sale of goods</SelectItem>
-                <SelectItem value="other">Other (please specify)</SelectItem>
+                <SelectItem value="returned-goods">
+                  {copy.returnedGoods}
+                </SelectItem>
+                <SelectItem value="sale-of-goods">
+                  {copy.saleOfGoods}
+                </SelectItem>
+                <SelectItem value="other">{copy.otherPleaseSpecify}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -794,7 +857,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           {formData.categoryOfItem === "other" && (
             <>
               <Label htmlFor="explaination" className="font-semibold">
-                Explaination
+                {copy.explanation}
               </Label>
               <Input
                 type="text"
@@ -811,7 +874,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
       </div>
       <div className="mb-4">
         <Label htmlFor="comments" className="font-semibold">
-          Comments
+          {copy.comments}
         </Label>
         <Input
           type="text"
@@ -842,7 +905,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               }, 0);
             }}
           />
-          <Label htmlFor="licence">Licence</Label>
+          <Label htmlFor="licence">{copy.licence}</Label>
         </div>
         <div className="flex items-center gap-2">
           <Checkbox
@@ -863,7 +926,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               }, 0);
             }}
           />
-          <Label htmlFor="certificate">Certificate</Label>
+          <Label htmlFor="certificate">{copy.certificate}</Label>
         </div>
         <div className="flex items-center gap-2">
           <Checkbox
@@ -884,7 +947,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
               }, 0);
             }}
           />
-          <Label htmlFor="invoice">Invoice</Label>
+          <Label htmlFor="invoice">{copy.invoice}</Label>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
@@ -892,7 +955,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           {formData.licence && (
             <>
               <Label htmlFor="licenceNumber" className="font-semibold">
-                Licence number
+                {copy.licenceNumber}
               </Label>
               <Input
                 type="text"
@@ -910,7 +973,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           {formData.certificate && (
             <>
               <Label htmlFor="certificateNumber" className="font-semibold">
-                Certificate number
+                {copy.certificateNumber}
               </Label>
               <Input
                 type="text"
@@ -928,7 +991,7 @@ const Form: React.FC<FormProps> = ({ formData, setFormData }) => {
           {formData.invoice && (
             <>
               <Label htmlFor="invoiceNumber" className="font-semibold">
-                Invoice number
+                {copy.invoiceNumber}
               </Label>
               <Input
                 type="text"

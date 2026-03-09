@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useResizeDetector } from "react-resize-detector";
 import Loading from "@/components/Loading";
 import dynamic from "next/dynamic";
+import { type Language, uiCopy } from "@/lib/i18n";
 
 const Document = dynamic(
   () => import("react-pdf").then((mod) => mod.Document),
@@ -29,14 +30,20 @@ const configurePdfjs = async () => {
 interface PDFViewerProps {
   pdfUrl: string;
   invoiceNumber: string;
+  language: Language;
 }
 
-export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
+export default function PDFViewer({
+  pdfUrl,
+  invoiceNumber,
+  language,
+}: PDFViewerProps) {
   const fileName = `cn23${invoiceNumber && `-${invoiceNumber}`}.pdf`;
   const [debouncedPdfUrl, setDebouncedPdfUrl] = useState<string>(pdfUrl);
   const [mounted, setMounted] = useState(false);
   const [pdfjsReady, setPdfjsReady] = useState(false);
   const prevPdfUrl = useRef(pdfUrl);
+  const copy = uiCopy[language];
 
   useEffect(() => {
     setMounted(true);
@@ -79,7 +86,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
           noData={null}
           onLoadError={(error) => {
             console.error("PDF Load Error:", error);
-            toast.error("PDF Load Error", {
+            toast.error(copy.pdfLoadError, {
               description: error.message,
             });
           }}
@@ -92,7 +99,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
             loading={<Loading width={width} />}
             onLoadError={(error) => {
               console.error("PDF Page Load Error:", error);
-              toast.error("PDF Page Load Error", {
+              toast.error(copy.pdfPageLoadError, {
                 description: error.message,
               });
             }}
@@ -115,7 +122,7 @@ export default function PDFViewer({ pdfUrl, invoiceNumber }: PDFViewerProps) {
             }
           }}
         >
-          Download
+          {copy.download}
         </Button>
       </div>
     </div>
