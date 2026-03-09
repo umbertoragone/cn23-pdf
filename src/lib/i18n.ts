@@ -70,7 +70,7 @@ export const uiCopy: Record<Language, UiCopy> = {
     business: "Società",
     street: "Via",
     postcode: "CAP",
-    city: "Citta",
+    city: "Città",
     country: "Paese",
     customsReference: "Riferimento dell'importatore",
     emailPhoneNumber: "Email/Numero di telefono",
