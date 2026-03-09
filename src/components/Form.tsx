@@ -151,7 +151,15 @@ const Form: React.FC<FormProps> = ({
   return (
     <form className="p-6">
       <div className="mb-6 flex items-start justify-between gap-4">
-        <h1 className="text-3xl font-black sm:text-4xl">{copy.title}</h1>
+        <div>
+          <h1 className="text-3xl font-black tracking-tight sm:text-4xl">
+            <span>CN23</span>
+            <span className="text-xl font-semibold text-neutral-500 dark:text-neutral-400">.it</span>
+          </h1>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 sm:text-base">
+            {copy.title}
+          </p>
+        </div>
         <Dialog>
           <DialogTrigger asChild>
             <Button

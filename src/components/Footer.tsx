@@ -95,7 +95,10 @@ export default function Footer({
         <p>
           {" "}
           &copy; {new Date().getFullYear()}{" "}
-          <Link href="/" className="font-semibold text-white">
+          <Link
+            href="/"
+            className="font-semibold text-neutral-900 dark:text-neutral-100"
+          >
             CN23.it
           </Link>
         </p>
