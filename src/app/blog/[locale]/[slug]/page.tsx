@@ -1,0 +1,157 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ContentPageShell from "@/components/ContentPageShell";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  blogLocales,
+  type BlogLocale,
+  formatPublishedDate,
+  getBlogPost,
+  getBlogPostByTranslationKey,
+  getBlogPosts,
+  getBlogSlugs,
+  isBlogLocale,
+} from "@/lib/content";
+
+interface BlogPostPageProps {
+  params: Promise<{ locale: string; slug: string }>;
+}
+
+const copy: Record<
+  BlogLocale,
+  {
+    backLabel: string;
+    metadataNotFound: string;
+    morePosts: string;
+    eyebrow: string;
+  }
+> = {
+  it: {
+    backLabel: "Torna al generatore",
+    metadataNotFound: "Articolo non trovato | Generatore PDF CN23",
+    morePosts: "Altri articoli",
+    eyebrow: "Blog IT",
+  },
+  en: {
+    backLabel: "Back to generator",
+    metadataNotFound: "Post not found | CN23 PDF Generator",
+    morePosts: "More posts",
+    eyebrow: "Blog EN",
+  },
+};
+
+export async function generateStaticParams() {
+  const params = await Promise.all(
+    blogLocales.map(async (locale) => {
+      const slugs = await getBlogSlugs(locale);
+      return slugs.map((slug) => ({ locale, slug }));
+    })
+  );
+
+  return params.flat();
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { locale, slug } = await params;
+
+  if (!isBlogLocale(locale)) {
+    return {
+      title: "Post not found | CN23 PDF Generator",
+    };
+  }
+
+  const post = await getBlogPost(locale, slug);
+
+  if (!post) {
+    return {
+      title: copy[locale].metadataNotFound,
+    };
+  }
+
+  return {
+    title: `${post.title} | CN23 PDF Generator`,
+    description: post.description,
+  };
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { locale, slug } = await params;
+
+  if (!isBlogLocale(locale)) {
+    notFound();
+  }
+
+  const [post, posts] = await Promise.all([
+    getBlogPost(locale, slug),
+    getBlogPosts(locale),
+  ]);
+
+  if (!post) {
+    notFound();
+  }
+
+  const alternateLocale = locale === "it" ? "en" : "it";
+  const alternatePost = await getBlogPostByTranslationKey(
+    alternateLocale,
+    post.translationKey
+  );
+
+  return (
+    <ContentPageShell
+      eyebrow={copy[locale].eyebrow}
+      title={post.title}
+      description={post.description}
+      backLabel={copy[locale].backLabel}
+      footerLanguage={locale}
+      footerLocalizedPaths={{
+        [locale]: `/blog/${locale}/${post.slug}`,
+        [alternateLocale]: alternatePost
+          ? `/blog/${alternateLocale}/${alternatePost.slug}`
+          : `/blog/${alternateLocale}`,
+      }}
+    >
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <Card className="border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+          <CardHeader className="gap-3 border-b border-neutral-200 dark:border-neutral-800">
+            <p className="text-sm text-neutral-500">
+              {formatPublishedDate(post.publishedAt, locale)}
+            </p>
+            <CardTitle className="text-2xl">{post.title}</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <article
+              className="markdown-content"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+          </CardContent>
+        </Card>
+        <Card className="h-fit border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+          <CardHeader>
+            <CardTitle className="text-lg">{copy[locale].morePosts}</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 pt-0">
+            {posts
+              .filter((entry) => entry.slug !== post.slug)
+              .slice(0, 3)
+              .map((entry) => (
+                <div key={entry.slug} className="space-y-1">
+                  <Link
+                    href={`/blog/${locale}/${entry.slug}`}
+                    className="font-medium hover:underline"
+                  >
+                    {entry.title}
+                  </Link>
+                  <p className="text-sm text-neutral-500">
+                    {formatPublishedDate(entry.publishedAt, locale)}
+                  </p>
+                </div>
+              ))}
+          </CardContent>
+        </Card>
+      </div>
+    </ContentPageShell>
+  );
+}

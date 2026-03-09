@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { type Language, uiCopy } from "@/lib/i18n";
+import packageJson from "../../package.json";
 
 interface FormData {
   senderName: string;
@@ -187,6 +188,9 @@ const Form: React.FC<FormProps> = ({
                 </SelectContent>
               </Select>
             </div>
+            <p className="text-xs text-muted-foreground">
+              v{packageJson.version}
+            </p>
           </DialogContent>
         </Dialog>
       </div>

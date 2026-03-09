@@ -78,6 +78,14 @@ function HomeContent() {
   const downloadTriggered = React.useRef(false);
 
   useEffect(() => {
+    document.body.classList.add("homepage-body");
+
+    return () => {
+      document.body.classList.remove("homepage-body");
+    };
+  }, []);
+
+  useEffect(() => {
     try {
       const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
       const nextLanguage = isLanguage(storedLanguage) ? storedLanguage : "it";
@@ -147,7 +155,7 @@ function HomeContent() {
   }, [pdfUrl, searchParams, formData.invoiceNumber]);
 
   return (
-    <div className="flex flex-col justify-center items-center md:h-screen bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex flex-col items-center justify-center bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white md:h-screen">
       <div className="flex flex-col md:flex-row items-stretch w-full md:h-screen gap-4 sm:p-8">
         <div className="border border-neutral-200 dark:border-neutral-800 basis-2/3 md:basis-3/5 overflow-y-scroll rounded-lg text-neutral-950 dark:text-neutral-50 bg-white dark:bg-neutral-950">
           <Form
@@ -165,7 +173,7 @@ function HomeContent() {
               language={language}
             />
           )}
-          <Footer language={language} />
+          <Footer language={language} onLanguageChange={setLanguage} />
         </div>
       </div>
     </div>

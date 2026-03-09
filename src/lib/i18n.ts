@@ -1,4 +1,5 @@
 export const LANGUAGE_STORAGE_KEY = "cn23-ui-language";
+export const LANGUAGE_CHANGE_EVENT = "cn23-language-change";
 
 export type Language = "it" | "en";
 
@@ -9,6 +10,10 @@ type UiCopy = {
   language: string;
   italian: string;
   english: string;
+  blog: string;
+  faq: string;
+  privacy: string;
+  backToGenerator: string;
   settings: string;
   settingsTitle: string;
   settingsDescription: string;
@@ -60,6 +65,10 @@ export const uiCopy: Record<Language, UiCopy> = {
     language: "Lingua",
     italian: "Italiano",
     english: "Inglese",
+    blog: "Blog",
+    faq: "FAQ",
+    privacy: "Privacy",
+    backToGenerator: "Torna al generatore",
     settings: "Impostazioni",
     settingsTitle: "Impostazioni",
     settingsDescription: "Configura le preferenze dell'interfaccia.",
@@ -109,6 +118,10 @@ export const uiCopy: Record<Language, UiCopy> = {
     language: "Language",
     italian: "Italian",
     english: "English",
+    blog: "Blog",
+    faq: "FAQ",
+    privacy: "Privacy",
+    backToGenerator: "Back to generator",
     settings: "Settings",
     settingsTitle: "Settings",
     settingsDescription: "Configure the interface preferences.",
