@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 @import "react-pdf/dist/Page/AnnotationLayer.css";
 @import "react-pdf/dist/Page/TextLayer.css";
@@ -104,53 +105,5 @@
 @media (min-width: 48rem) {
   body.homepage-body {
     overflow: hidden;
-  }
-}
-
-@layer components {
-  .markdown-content {
-    @apply text-base leading-7 text-neutral-700 dark:text-neutral-200;
-  }
-
-  .markdown-content > * + * {
-    @apply mt-5;
-  }
-
-  .markdown-content h2 {
-    @apply mt-8 text-2xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50;
-  }
-
-  .markdown-content h3 {
-    @apply mt-6 text-xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50;
-  }
-
-  .markdown-content p,
-  .markdown-content li {
-    @apply text-base leading-7 text-neutral-700 dark:text-neutral-200;
-  }
-
-  .markdown-content ul,
-  .markdown-content ol {
-    @apply ml-6 space-y-2;
-  }
-
-  .markdown-content ul {
-    @apply list-disc;
-  }
-
-  .markdown-content ol {
-    @apply list-decimal;
-  }
-
-  .markdown-content a {
-    @apply font-medium text-neutral-950 underline underline-offset-4 dark:text-neutral-50;
-  }
-
-  .markdown-content strong {
-    @apply font-semibold text-neutral-950 dark:text-neutral-50;
-  }
-
-  .markdown-content code {
-    @apply rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-sm dark:bg-neutral-800;
   }
 }

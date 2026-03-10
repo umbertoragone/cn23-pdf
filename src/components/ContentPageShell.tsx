@@ -16,6 +16,7 @@ export default function ContentPageShell({
   eyebrow,
   title,
   description,
+  backLabel,
   footerLanguage = "en",
   footerLocalizedPaths,
   children,
@@ -25,7 +26,10 @@ export default function ContentPageShell({
       <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col gap-6">
           <div>
-            <ContentPageBackLink defaultLanguage={footerLanguage} />
+            <ContentPageBackLink
+              defaultLanguage={footerLanguage}
+              label={backLabel}
+            />
           </div>
           <div className="space-y-3">
             <p className="text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
