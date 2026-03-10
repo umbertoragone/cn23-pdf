@@ -17,6 +17,11 @@ export interface BlogPost extends BlogPostSummary {
   contentHtml: string;
 }
 
+export interface MarkdownDocument {
+  contentHtml: string;
+  lastUpdated?: string;
+}
+
 export type BlogLocale = "it" | "en";
 
 interface BlogFrontmatter {
@@ -30,6 +35,19 @@ export const blogLocales: BlogLocale[] = ["it", "en"];
 
 function getBlogDirectory(locale: BlogLocale): string {
   return path.join(process.cwd(), "contents", "blog", locale);
+}
+
+function getPoliciesDirectory(): string {
+  return path.join(process.cwd(), "contents", "policies");
+}
+
+async function renderMarkdown(content: string): Promise<string> {
+  const processedContent = await remark()
+    .use(remarkGfm)
+    .use(remarkHtml)
+    .process(content);
+
+  return processedContent.toString();
 }
 
 function normalizePublishedAt(value?: string | Date): string {
@@ -94,14 +112,29 @@ export async function getBlogPost(
   try {
     const fileContents = await fs.readFile(filePath, "utf8");
     const { data, content } = matter(fileContents);
-    const processedContent = await remark()
-      .use(remarkGfm)
-      .use(remarkHtml)
-      .process(content);
 
     return {
       ...toSummary(slug, data as BlogFrontmatter),
-      contentHtml: processedContent.toString(),
+      contentHtml: await renderMarkdown(content),
+    };
+  } catch {
+    return null;
+  }
+}
+
+export async function getPolicyDocument(
+  slug: string
+): Promise<MarkdownDocument | null> {
+  const filePath = path.join(getPoliciesDirectory(), `${slug}.md`);
+
+  try {
+    const fileContents = await fs.readFile(filePath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    return {
+      lastUpdated:
+        typeof data.lastUpdated === "string" ? data.lastUpdated : undefined,
+      contentHtml: await renderMarkdown(content),
     };
   } catch {
     return null;

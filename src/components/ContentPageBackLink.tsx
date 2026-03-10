@@ -14,10 +14,12 @@ import {
 
 interface ContentPageBackLinkProps {
   defaultLanguage?: Language;
+  label?: string;
 }
 
 export default function ContentPageBackLink({
   defaultLanguage = "en",
+  label,
 }: ContentPageBackLinkProps) {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
 
@@ -49,7 +51,7 @@ export default function ContentPageBackLink({
     <Button variant="ghost" size="sm" asChild>
       <Link href="/" className="inline-flex items-center gap-2">
         <ChevronLeft className="size-4" />
-        {uiCopy[language].backToGenerator}
+        {label ?? uiCopy[language].backToGenerator}
       </Link>
     </Button>
   );

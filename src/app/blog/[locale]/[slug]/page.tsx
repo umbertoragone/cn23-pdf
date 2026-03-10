@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </CardHeader>
           <CardContent className="pt-6">
             <article
-              className="markdown-content"
+              className="prose prose-neutral max-w-none dark:prose-invert prose-headings:tracking-tight prose-a:text-neutral-950 prose-a:underline prose-a:underline-offset-4 dark:prose-a:text-neutral-50"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}
             />
           </CardContent>
