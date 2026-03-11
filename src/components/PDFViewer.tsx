@@ -66,7 +66,7 @@ export default function PDFViewer({
       <div ref={ref} className="w-full my-auto">
         <AspectRatio
           ratio={1.375}
-          className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden"
+          className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-xl overflow-hidden"
         >
           <Loading width={width} />
         </AspectRatio>
@@ -78,7 +78,7 @@ export default function PDFViewer({
     <div ref={ref} className="w-full my-auto">
       <AspectRatio
         ratio={1.375}
-        className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-lg overflow-hidden text-black"
+        className="border border-neutral-200 dark:border-neutral-800 bg-white rounded-xl overflow-hidden text-black"
       >
         <Document
           file={debouncedPdfUrl}
@@ -109,7 +109,7 @@ export default function PDFViewer({
       <div className="flex justify-center items-center gap-2 my-4">
         <Button
           className={cn(
-            "rounded-lg bg-green-700 hover:bg-green-800 font-semibold text-sm text-white shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 cursor-pointer",
+            "rounded-xl bg-green-700 hover:bg-green-800 font-semibold text-sm text-white shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 cursor-pointer",
           )}
           onClick={() => {
             if (debouncedPdfUrl) {
