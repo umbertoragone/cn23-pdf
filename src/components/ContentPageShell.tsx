@@ -7,6 +7,7 @@ interface ContentPageShellProps {
   title: string;
   description: string;
   backLabel?: string;
+  backHref?: string;
   footerLanguage?: Language;
   footerLocalizedPaths?: Partial<Record<Language, string>>;
   children: React.ReactNode;
@@ -17,6 +18,7 @@ export default function ContentPageShell({
   title,
   description,
   backLabel,
+  backHref,
   footerLanguage = "en",
   footerLocalizedPaths,
   children,
@@ -29,6 +31,7 @@ export default function ContentPageShell({
             <ContentPageBackLink
               defaultLanguage={footerLanguage}
               label={backLabel}
+              href={backHref}
             />
           </div>
           <div className="space-y-3">

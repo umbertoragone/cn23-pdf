@@ -33,7 +33,7 @@ const copy: Record<
   }
 > = {
   it: {
-    backLabel: "Torna al generatore",
+    backLabel: "Torna al blog",
     metadataNotFound: "Articolo non trovato | Generatore PDF CN23",
     morePosts: "Altri articoli",
     eyebrow: "Blog",
@@ -43,7 +43,7 @@ const copy: Record<
     ctaLabel: "Genera il tuo CN23",
   },
   en: {
-    backLabel: "Back to generator",
+    backLabel: "Back to blog",
     metadataNotFound: "Post not found | CN23 PDF Generator",
     morePosts: "More posts",
     eyebrow: "Blog",
@@ -118,6 +118,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       title={post.title}
       description={post.description}
       backLabel={copy[locale].backLabel}
+      backHref={`/blog/${locale}`}
       footerLanguage={locale}
       footerLocalizedPaths={{
         [locale]: `/blog/${locale}/${post.slug}`,
