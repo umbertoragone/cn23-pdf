@@ -1,5 +1,5 @@
 ---
-translationKey: fill-and-print-cn23-at-home
+translationKey: fill-and-print-cn23-form-at-home
 title: Fill out and print the CN23 form at home, no more queues at the post office
 description: Preparing the CN23 at home gives you more time, fewer mistakes, and a cleaner final form.
 publishedAt: 2026-03-10

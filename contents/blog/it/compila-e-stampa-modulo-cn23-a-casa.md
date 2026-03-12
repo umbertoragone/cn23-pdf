@@ -1,5 +1,5 @@
 ---
-translationKey: fill-and-print-cn23-at-home
+translationKey: fill-and-print-cn23-form-at-home
 title: Compila e stampa il modulo CN23 a casa, niente più code all'ufficio postale
 description: Preparare il CN23 con calma da casa riduce errori, stress e tempi allo sportello.
 publishedAt: 2026-03-10
