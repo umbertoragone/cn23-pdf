@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ContentPageShell from "@/components/ContentPageShell";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import {
   blogLocales,
   type BlogLocale,
@@ -25,19 +27,30 @@ const copy: Record<
     metadataNotFound: string;
     morePosts: string;
     eyebrow: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaLabel: string;
   }
 > = {
   it: {
     backLabel: "Torna al generatore",
     metadataNotFound: "Articolo non trovato | Generatore PDF CN23",
     morePosts: "Altri articoli",
-    eyebrow: "Blog IT",
+    eyebrow: "Blog",
+    ctaTitle: "Prova il generatore gratuitamente",
+    ctaDescription:
+      "Compila il CN23 nel browser e scarica il PDF pronto da stampare.",
+    ctaLabel: "Genera il tuo CN23",
   },
   en: {
     backLabel: "Back to generator",
     metadataNotFound: "Post not found | CN23 PDF Generator",
     morePosts: "More posts",
-    eyebrow: "Blog EN",
+    eyebrow: "Blog",
+    ctaTitle: "Try the generator for free",
+    ctaDescription:
+      "Fill out the CN23 in your browser and download a PDF ready to print.",
+    ctaLabel: "Generate your CN23",
   },
 };
 
@@ -46,7 +59,7 @@ export async function generateStaticParams() {
     blogLocales.map(async (locale) => {
       const slugs = await getBlogSlugs(locale);
       return slugs.map((slug) => ({ locale, slug }));
-    })
+    }),
   );
 
   return params.flat();
@@ -96,7 +109,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const alternateLocale = locale === "it" ? "en" : "it";
   const alternatePost = await getBlogPostByTranslationKey(
     alternateLocale,
-    post.translationKey
+    post.translationKey,
   );
 
   return (
@@ -126,6 +139,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               className="prose prose-neutral max-w-none dark:prose-invert prose-headings:tracking-tight prose-a:text-neutral-950 prose-a:underline prose-a:underline-offset-4 dark:prose-a:text-neutral-50"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}
             />
+            <div className="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-950">
+              <div className="space-y-3">
+                <div className="space-y-1">
+                  <h2 className="text-xl font-semibold tracking-tight">
+                    {copy[locale].ctaTitle}
+                  </h2>
+                  <p className="text-sm leading-6 text-neutral-600 dark:text-neutral-300">
+                    {copy[locale].ctaDescription}
+                  </p>
+                </div>
+                <Button
+                  asChild
+                  className={cn(
+                    "rounded-xl bg-neutral-950 hover:bg-neutral-800 font-semibold text-sm text-white shadow-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-opacity-75 cursor-pointer dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 dark:focus:ring-neutral-500",
+                  )}
+                >
+                  <Link href="/">{copy[locale].ctaLabel}</Link>
+                </Button>
+              </div>
+            </div>
           </CardContent>
         </Card>
         <Card className="h-fit border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
